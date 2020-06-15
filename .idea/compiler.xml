@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="praktikum.webeng.hello.main" target="1.8" />
+      <module name="praktikum.webeng.hello.test" target="1.8" />
+      <module name="praktikum.webeng.helloJava.main" target="1.8" />
+      <module name="praktikum.webeng.helloJava.test" target="1.8" />
+      <module name="praktikum.webeng.helloServlet.main" target="1.8" />
+      <module name="praktikum.webeng.helloServlet.test" target="1.8" />
+      <module name="praktikum.webeng.jsp.main" target="1.8" />
+      <module name="praktikum.webeng.jsp.test" target="1.8" />
+      <module name="praktikum.webeng.navigation.main" target="1.8" />
+      <module name="praktikum.webeng.navigation.test" target="1.8" />
+      <module name="praktikum.webeng.neuesProjekt.main" target="1.8" />
+      <module name="praktikum.webeng.neuesProjekt.test" target="1.8" />
+      <module name="praktikum.webeng.webeng02.main" target="1.8" />
+      <module name="praktikum.webeng.webeng02.test" target="1.8" />
+      <module name="praktikum.webeng.webengShop.main" target="1.8" />
+      <module name="praktikum.webeng.webengShop.test" target="1.8" />
+      <module name="praktikum.webeng.webengShopbac.main" target="1.8" />
+      <module name="praktikum.webeng.webengShopbac.test" target="1.8" />
+      <module name="praktikum.webeng.webengShopbackup.main" target="1.8" />
+      <module name="praktikum.webeng.webengShopbackup.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

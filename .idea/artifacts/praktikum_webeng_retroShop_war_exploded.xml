@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="praktikum.webeng.retroShop:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/praktikum_webeng_retroShop_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="praktikum.webeng.retroShop/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="praktikum.webeng.retroShop" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
