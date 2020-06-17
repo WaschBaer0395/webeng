@@ -13,7 +13,7 @@
     	<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
 	</listener>
 
-<!--
+
 	<servlet>
 		<servlet-name>H2Console</servlet-name>
 		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
@@ -34,9 +34,9 @@
 
 	<context-param>
 		<param-name>dataSourceType</param-name>
-		<param-value>MOCK</param-value> -->   <!-- values: MOCK, SQL, ORM -->
+		<param-value>MOCK</param-value>   <!-- values: MOCK, SQL, ORM -->
 
-<!--</context-param>
+</context-param>
 
 	<context-param>
 		<param-name>db.url</param-name>
@@ -50,7 +50,7 @@
 	<context-param>
 		<param-name>db.password</param-name>
 		<param-value>sa</param-value>
-	</context-param>-->
+	</context-param>
 
 
 	<welcome-file-list>
@@ -79,6 +79,5 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-
 
 </web-app>

@@ -16,24 +16,20 @@ import java.util.List;
 @Named
 public class ArticleBean {
 
-    ArticleManager articleManager;
+    ArticleManager articleManager = new ArticleManager();;
     private Article article = new Article();
     private List<Article> articleList;
 
 
     @PostConstruct
     public void init(){
-        if (articleManager == null){
+        /*if (articleManager == null){
             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext();
             //DAOFactory.setSer ??????
             articleManager = new ArticleManager();
             //articleManager.setDAo();
-        }
-
-        if(article == null){
-            article = new Article();
+        }*/
             articleList = articleManager.getTheArticles();
-        }
     }
 
     public void setArticle(Article a){

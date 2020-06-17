@@ -12,55 +12,55 @@ public class MockArticleDAO implements ArticleDAO {
     
     private List<Article> articles = new ArrayList<>();
 
-    MockArticleDAO(){
+    public MockArticleDAO(){
 
-    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-		LocalDate now = LocalDate.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			LocalDate now = LocalDate.now();
 
 
-		Article a1 = new Article();
-		a1.setId(1);
-		a1.setName("GameBoy");
-		a1.setPrice(10f);
-		a1.setSellerId(1);
-		a1.setImagePath("irgendeinpfad");
-		a1.setMinPrice(5f);
-		a1.setDesc("Toller GameBoy");
-		a1.setReleaseDate(now);
-		add(a1);
+			Article a1 = new Article();
+			a1.setId(1);
+			a1.setName("GameBoy");
+			a1.setPrice(10f);
+			a1.setSellerId(1);
+			a1.setImagePath("irgendeinpfad");
+			a1.setMinPrice(5f);
+			a1.setDesc("Toller GameBoy");
+			a1.setReleaseDate(now);
+			add(a1);
 
-		Article a2 = new Article();
-		a1.setId(2);
-		a1.setName("N64");
-		a1.setPrice(56f);
-		a1.setSellerId(1);
-		a1.setImagePath("irgendeinpfad");
-		a1.setMinPrice(52f);
-		a1.setDesc("Tolle N64");
-		a1.setReleaseDate(now);
-		add(a2);
+			Article a2 = new Article();
+			a2.setId(2);
+			a2.setName("N64");
+			a2.setPrice(56f);
+			a2.setSellerId(1);
+			a2.setImagePath("irgendeinpfad");
+			a2.setMinPrice(52f);
+			a2.setDesc("Tolle N64");
+			a2.setReleaseDate(now);
+			add(a2);
 
-		Article a3 = new Article();
-		a1.setId(3);
-		a1.setName("Ocarina of Time");
-		a1.setPrice(3.99f);
-		a1.setSellerId(2);
-		a1.setImagePath("irgendeinpfad");
-		a1.setMinPrice(3f);
-		a1.setDesc("Gut Erhalten");
-		a1.setReleaseDate(now);
-		add(a3);
+			Article a3 = new Article();
+			a3.setId(3);
+			a3.setName("Ocarina of Time");
+			a3.setPrice(3.99f);
+			a3.setSellerId(2);
+			a3.setImagePath("irgendeinpfad");
+			a3.setMinPrice(3f);
+			a3.setDesc("Gut Erhalten");
+			a3.setReleaseDate(now);
+			add(a3);
 
-		Article a4 = new Article();
-		a1.setId(4);
-		a1.setName("SuperMario 64");
-		a1.setPrice(2.95f);
-		a1.setSellerId(3);
-		a1.setImagePath("irgendeinpfad");
-		a1.setMinPrice(2.55f);
-		a1.setDesc("Sehr gut erhalten");
-		a1.setReleaseDate(now);
-		add(a4);
+			Article a4 = new Article();
+			a4.setId(4);
+			a4.setName("SuperMario 64");
+			a4.setPrice(2.95f);
+			a4.setSellerId(3);
+			a4.setImagePath("irgendeinpfad");
+			a4.setMinPrice(2.55f);
+			a4.setDesc("Sehr gut erhalten");
+			a4.setReleaseDate(now);
+			add(a4);
 
 
 	}
