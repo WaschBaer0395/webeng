@@ -5,16 +5,17 @@ import transferobjects.Article;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
   
-	private static final String findAllQuery = "SELECT ID,NAME,PRICE,QUANTITY FROM Articles WHERE true";
+	private static final String findAllQuery = "SELECT ID,NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID FROM Articles WHERE true";
 	private static final String findQuery = "SELECT * FROM Articles WHERE ID=?";
-	private static final String updateQuery = "UPDATE Articles SET NAME=?, PRICE=?, QUANTITY=? WHERE ID=?";
-	private static final String insertQuery = "INSERT INTO Articles (NAME,PRICE,QUANTITY) VALUES(?, ?, ?)";
+	private static final String updateQuery = "UPDATE Articles SET NAME=?, PRICE=?, DESCRIPTION=?, MINPRICE=?, IMAGEPATH=? WHERE ID=?";
+	private static final String insertQuery = "INSERT INTO Articles (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, ?, ?, ?, ?, ?)";
 	private static final String deleteQuery = "DELETE FROM Articles WHERE ID=?";
 	
 	
@@ -28,7 +29,15 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
 		
 			ResultSet results = statement.executeQuery();
 			if (results.next()) { 
-				a = new Article(results.getInt(1), results.getString(2),results.getFloat(3),results.getInt(4));	
+				a = new Article();
+				a.setId(results.getInt(1));
+				a.setName(results.getString(2));
+				a.setPrice(results.getFloat(3));
+				a.setDesc(results.getString(4));
+				a.setReleaseDate((LocalDate)results.getObject(5));
+				a.setMinPrice(results.getFloat(6));
+				a.setImagePath(results.getString(7));
+				a.setSellerId(results.getInt(8));
 			} 
 	
 			statement.close();	
@@ -52,8 +61,18 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
 			
 			articles = new ArrayList<Article>();
 			ResultSet results = statement.executeQuery();
-			while (results.next()) { 
-				articles.add(new Article(results.getInt(1),results.getString(2),results.getFloat(3),results.getInt(4)));				
+			while (results.next()) {
+				Article a = new Article();
+				a = new Article();
+				a.setId(results.getInt(1));
+				a.setName(results.getString(2));
+				a.setPrice(results.getFloat(3));
+				a.setDesc(results.getString(4));
+				a.setReleaseDate((LocalDate)results.getObject(5));
+				a.setMinPrice(results.getFloat(6));
+				a.setImagePath(results.getString(7));
+				a.setSellerId(results.getInt(8));
+				articles.add(a);
 			} 
 			statement.close();
 	
@@ -74,11 +93,14 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
     public void add(Article a) {
     	try
 	    {
-	      
 	      PreparedStatement statement = getConnection().prepareStatement(insertQuery);
 	      statement.setString(1, a.getName());
 	      statement.setFloat(2, a.getPrice());
-	      statement.setInt(3, a.getQuantity());  
+	      statement.setString(3, a.getDesc());
+	      statement.setObject(4, a.getReleaseDate());
+	      statement.setFloat(5, a.getMinPrice());
+	      statement.setString(6, a.getImagePath());
+	      statement.setInt(7, a.getSellerId());
 	      statement.execute();
 	      statement.close();
 	  	
@@ -95,12 +117,12 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
     public void update(Article a) {
     	try
 	    {
-	      
 	      PreparedStatement statement = getConnection().prepareStatement(updateQuery);
 	      statement.setString(1, a.getName());
 	      statement.setFloat(2, a.getPrice());
-	      statement.setInt(3, a.getQuantity());
-	      statement.setLong(4, a.getId());
+	      statement.setString(3, a.getDesc());
+	      statement.setFloat(4, a.getMinPrice());
+	      statement.setString(4, a.getImagePath());
 	     
 	      statement.executeUpdate();
 	      statement.close();
