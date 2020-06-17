@@ -26,7 +26,7 @@
 .idea/**/dbnavigator.xml
 
 # Gradle
-.gradle/*
+.gradle/
 .idea/**/gradle.xml
 .idea/**/libraries
 
@@ -100,6 +100,6 @@ fabric.properties
 .idea/$CACHE_FILE$
 
 #Idea files
-.idea/*
+.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
