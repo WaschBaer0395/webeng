@@ -102,4 +102,7 @@ fabric.properties
 #Idea files
 .idea/
 
+#Build files and folders
+retroShop/build/
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij
