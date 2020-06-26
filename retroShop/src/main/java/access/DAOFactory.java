@@ -2,6 +2,7 @@ package access;
 
 import configuration.Configuration;
 import access.mock.MockArticleDAO;
+import access.mock.MockUserDAO;
 import access.orm.OrmArticleDAO;
 import access.sql.SqlArticleDAO;
 
@@ -14,6 +15,29 @@ public class DAOFactory {
 		ORM,
 		MOCK
 	}
+
+	public static UserDAO getUserDAO(){
+		return getUserDAO(Configuration.getDataSourceType());
+	}
+
+	private static UserDAO getUserDAO(String typeString){
+		DataSourceType type = DataSourceType.valueOf(Configuration.getDataSourceType());
+		switch(type)
+		{
+			case MOCK:
+				return new MockUserDAO();
+
+			case ORM:
+				return new MockUserDAO();
+
+			//case SQL:
+			//	return new MockUserDAO();
+
+			default:
+				return null;
+
+		}
+	}
 	
 	
 	// getArticleDAO with type stored in Configuration class - preferred way to get DAO
@@ -24,7 +48,7 @@ public class DAOFactory {
 	}
 	
 	// getArticleDAO with type given by typeString
-	public static ArticleDAO getArticleDAO(String typeString) {
+	private static ArticleDAO getArticleDAO(String typeString) {
 		DataSourceType type = DataSourceType.valueOf(Configuration.getDataSourceType());
 		switch(type)
 		{
