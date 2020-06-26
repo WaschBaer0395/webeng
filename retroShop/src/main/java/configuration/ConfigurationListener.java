@@ -1,4 +1,4 @@
-package presentation.configuration;
+package configuration;
 
 import configuration.Configuration;
 
@@ -16,8 +16,7 @@ public class ConfigurationListener implements javax.servlet.ServletContextListen
     	Configuration.setUsername(sce.getServletContext().getInitParameter("db.user"));
     	Configuration.setPassword(sce.getServletContext().getInitParameter("db.password"));
     	Configuration.setUrl(sce.getServletContext().getInitParameter("db.url"));
-    	Configuration.setDriver(sce.getServletContext().getInitParameter("org.h2.Driver"));
-    	Configuration.setDriver("org.h2.Driver");
+    	Configuration.setDriver(sce.getServletContext().getInitParameter("org.h2.driver"));
     } 	
 
     public void contextDestroyed(ServletContextEvent sce) { 

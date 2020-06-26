@@ -39,22 +39,25 @@
 
 	<context-param>
 		<param-name>dataSourceType</param-name>
-		<param-value>MOCK</param-value>   <!-- values: MOCK, SQL, ORM -->
+		<param-value>SQL</param-value>   <!-- values: MOCK, SQL, ORM -->
 
 </context-param>
 
 	<context-param>
 		<param-name>db.url</param-name>
-		<param-value>jdbc:h2:./h2/db</param-value>
+		<param-value>jdbc:sqlserver://kewla.de:1433;databaseName=WebEng</param-value>
 	</context-param>
-
 	<context-param>
 		<param-name>db.user</param-name>
-		<param-value>sa</param-value>
+		<param-value>SA</param-value>
 	</context-param>
 	<context-param>
 		<param-name>db.password</param-name>
-		<param-value>sa</param-value>
+		<param-value>Praktikum!B02</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.h2.driver</param-name>
+		<param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
 	</context-param>
 
 

@@ -12,6 +12,7 @@ public abstract class SqlDaoBase {
 	public SqlDaoBase()
 	{
 		try {
+			System.out.println(Configuration.getDriver());
 			Class.forName(Configuration.getDriver());
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();

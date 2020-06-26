@@ -3,6 +3,7 @@ package access.sql;
 import access.ArticleDAO;
 import transferobjects.Article;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -12,11 +13,11 @@ import java.util.List;
 
 public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
   
-	private static final String findAllQuery = "SELECT ID,NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID FROM Articles WHERE true";
-	private static final String findQuery = "SELECT * FROM Articles WHERE ID=?";
-	private static final String updateQuery = "UPDATE Articles SET NAME=?, PRICE=?, DESCRIPTION=?, MINPRICE=?, IMAGEPATH=? WHERE ID=?";
-	private static final String insertQuery = "INSERT INTO Articles (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, ?, ?, ?, ?, ?)";
-	private static final String deleteQuery = "DELETE FROM Articles WHERE ID=?";
+	private static final String findAllQuery = "SELECT ID,NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID FROM WebEng.retroShop.Article";
+	private static final String findQuery = "SELECT * FROM WebEng.retroShop.Article WHERE ID=?";
+	private static final String updateQuery = "UPDATE WebEng.retroShop.Article SET NAME=?, PRICE=?, DESCRIPTION=?, MINPRICE=?, IMAGEPATH=? WHERE ID=?";
+	private static final String insertQuery = "INSERT INTO WebEng.retroShop.Article (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, convert(date ,?), ?, ?, ?, ?)";
+	private static final String deleteQuery = "DELETE FROM WebEng.retroShop.Article WHERE ID=?";
 	
 	
 	@Override
@@ -34,7 +35,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
 				a.setName(results.getString(2));
 				a.setPrice(results.getFloat(3));
 				a.setDesc(results.getString(4));
-				a.setReleaseDate((LocalDate)results.getObject(5));
+				a.setReleaseDate(results.getDate(5).toLocalDate());
 				a.setMinPrice(results.getFloat(6));
 				a.setImagePath(results.getString(7));
 				a.setSellerId(results.getInt(8));
@@ -68,7 +69,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
 				a.setName(results.getString(2));
 				a.setPrice(results.getFloat(3));
 				a.setDesc(results.getString(4));
-				a.setReleaseDate((LocalDate)results.getObject(5));
+				a.setReleaseDate(results.getDate(5).toLocalDate());
 				a.setMinPrice(results.getFloat(6));
 				a.setImagePath(results.getString(7));
 				a.setSellerId(results.getInt(8));
@@ -97,7 +98,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
 	      statement.setString(1, a.getName());
 	      statement.setFloat(2, a.getPrice());
 	      statement.setString(3, a.getDesc());
-	      statement.setObject(4, a.getReleaseDate());
+	      statement.setDate(4, Date.valueOf(a.getReleaseDate()));
 	      statement.setFloat(5, a.getMinPrice());
 	      statement.setString(6, a.getImagePath());
 	      statement.setInt(7, a.getSellerId());

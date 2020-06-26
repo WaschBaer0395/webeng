@@ -5,7 +5,7 @@ package configuration;
  * provides static configuration properties for database-Connections and DAO-TYpe
  */
 public class Configuration {
-	private static String dataSourceType = "MOCK";
+	private static String dataSourceType;
 	
 	private static String username;
 	private static String password;

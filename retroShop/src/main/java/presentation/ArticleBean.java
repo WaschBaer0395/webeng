@@ -1,4 +1,4 @@
-package presentation.beans;
+package presentation;
 
 import access.DAOFactory;
 import businesslogic.ArticleManager;

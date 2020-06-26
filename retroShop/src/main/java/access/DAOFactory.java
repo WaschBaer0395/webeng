@@ -18,6 +18,7 @@ public class DAOFactory {
 	
 	// getArticleDAO with type stored in Configuration class - preferred way to get DAO
 	public static ArticleDAO getArticleDAO() {
+		System.out.println(Configuration.getDataSourceType());
 		return getArticleDAO(Configuration.getDataSourceType());
 		
 	}
@@ -34,6 +35,7 @@ public class DAOFactory {
 			return new OrmArticleDAO();
 
 		case SQL:
+			System.out.println("SQL was selected!");
 			return new SqlArticleDAO();
 		
 		default:

@@ -18,7 +18,10 @@ dependencies {
 
 	compile 'org.primefaces:primefaces:8.0'
     compile 'org.primefaces.extensions:primefaces-extensions:6.2.4'
-    
+
+// https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
+	compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '7.4.1.jre8'
+
     implementation("io.ebean:ebean-annotation:6.11")
     implementation("io.ebean:ebean:12.3.2")
 	
