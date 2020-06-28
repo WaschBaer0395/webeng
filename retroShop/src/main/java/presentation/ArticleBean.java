@@ -57,6 +57,10 @@ public class ArticleBean {
         articleManager.addArticle(article);
         articleList = articleManager.getTheArticles();
         return "";
+
+    }public String updateArticle(){
+        articleManager.updateArticle(article);
+        return "";
     }
 
     public String removeArticle(){

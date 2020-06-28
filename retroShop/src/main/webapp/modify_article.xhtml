@@ -1,0 +1,41 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+>
+            <h:form action="">
+                <div class="col-sm">
+                    <div class="p-field p-grid">
+                        <h:outputLabel for="articleName" styleClass="p-col-fixed" style="width:100px" value="Name"/>
+                        <div class="p-col">
+                            <p:inputText id="articleName" value="#{articleBean.article.name}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
+                        <h:outputLabel for="description" styleClass="p-col-fixed" style="width:100px"
+                                       value="Beschreibung"/>
+                        <div class="p-col">
+                            <p:inputText id="description" value="#{articleBean.article.desc}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
+                        <h:outputLabel for="price" styleClass="p-col-fixed" style="width:100px" value="Preis"/>
+                        <div class="p-col">
+                            <p:inputNumber id="price" value="#{articleBean.article.price}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
+                        <h:outputLabel for="min-price" styleClass="p-col-fixed" style="width:100px"
+                                       value="Mindestpreis"/>
+                        <div class="p-col">
+                            <p:inputNumber id="min-price" value="#{articleBean.article.minPrice}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid">
+                        <h:commandButton action="#{articleBean.updateArticle}" value="Update" style="margin-top:20px"/>
+                    </div>
+                </div>
+            </h:form>
+</ui:composition>

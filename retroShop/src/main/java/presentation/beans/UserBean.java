@@ -21,7 +21,14 @@ public class UserBean {
     }
 
     public String saveUser(){
+
         userManager.addUser(user);
+        return "welcome.xhtml";
+    }
+
+    public String updateUser(){
+
+        userManager.updateUser(user);
         return "welcome.xhtml";
     }
 }

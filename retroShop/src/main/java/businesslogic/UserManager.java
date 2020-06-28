@@ -8,10 +8,13 @@ import java.io.Serializable;
 
 public class UserManager implements Serializable {
 
-    UserDAO userDao = DAOFactory.getUserDAO();
+    private UserDAO userDao = DAOFactory.getUserDAO();
 
 
     public void addUser(User user){
         userDao.add(user);
+    }
+    public void updateUser(User user){
+        userDao.update(user);
     }
 }

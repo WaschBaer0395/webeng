@@ -5,6 +5,6 @@ import transferobjects.User;
 public interface UserDAO {
 
 
-    public void add(User user);
-    public void update(User user);
+    void add(User user);
+    void update(User user);
 }

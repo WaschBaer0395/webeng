@@ -3,6 +3,7 @@ package transferobjects;
 
 import io.ebean.annotation.Length;
 import io.ebean.annotation.NotNull;
+import jdk.nashorn.internal.objects.annotations.Setter;
 
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
@@ -14,20 +15,17 @@ import java.time.LocalDate;
 
 @RequestScoped
 @Named
-@Entity
-@Table(name = "users")
+//@Entity
+//@Table(name = "users")
 public class User {
 
-    @Id
+
     private long id;
-    @NotNull @Length(30)
     private String userName;
     private String birthDate;
-    @NotNull
     private String email;
     private String contactNumber;
     private String address;
-    @NotNull
     private String password;
 
 
