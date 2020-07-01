@@ -4,7 +4,7 @@ package presentation.beans;
 import businesslogic.UserManager;
 import transferobjects.User;
 
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -23,12 +23,17 @@ public class UserBean {
     public String saveUser(){
 
         userManager.addUser(user);
-        return "welcome.xhtml";
+        return "success";
     }
 
     public String updateUser(){
 
         userManager.updateUser(user);
         return "welcome.xhtml";
+    }
+
+    public String loginUser(){
+
+        return "error";
     }
 }

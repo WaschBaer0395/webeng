@@ -1,5 +1,6 @@
 package access;
 
+import access.sql.SqlUserDAO;
 import configuration.Configuration;
 import access.mock.MockArticleDAO;
 import access.mock.MockUserDAO;
@@ -21,22 +22,8 @@ public class DAOFactory {
 	}
 
 	private static UserDAO getUserDAO(String typeString){
-		DataSourceType type = DataSourceType.valueOf(Configuration.getDataSourceType());
-		switch(type)
-		{
-			case MOCK:
-				return new MockUserDAO();
-
-			case ORM:
-				return new MockUserDAO();
-
-			//case SQL:
-			//	return new MockUserDAO();
-
-			default:
-				return null;
-
-		}
+		//DataSourceType type = DataSourceType.valueOf(Configuration.getDataSourceType());
+				return new SqlUserDAO();
 	}
 	
 	

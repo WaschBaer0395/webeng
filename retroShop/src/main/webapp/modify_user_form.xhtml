@@ -35,7 +35,7 @@
                     <div class="p-field p-grid">
                         <h:outputLabel for="email" styleClass="p-col-fixed" style="width:100px" value="Email"/>
                         <div class="p-col">
-                            <p:inputText id="email" required="true"
+                            <p:inputText id="email" required="true" immediate="true"
                                          value="#{userBean.user.email}">
                                 <f:validator validatorId="presentation.beans.EmailValidator"/>
                             </p:inputText>
@@ -47,7 +47,7 @@
                         <div class="p-col">
                             <p:inputText id="contactNumber" value="#{userBean.user.contactNumber}" required="true"/>
                         </div>
-                        <h:commandButton action="#{userBean.updateUser}" value="Update" style="margin-top:20px"/>
+                        <h:commandButton action="#{userBean.updateUser}" type="submit" value="Update" style="margin-top:20px"/>
                     </div>
                 </div>
             </h:form>

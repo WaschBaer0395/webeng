@@ -5,7 +5,7 @@ import io.ebean.annotation.Length;
 import io.ebean.annotation.NotNull;
 import jdk.nashorn.internal.objects.annotations.Setter;
 
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.Id;

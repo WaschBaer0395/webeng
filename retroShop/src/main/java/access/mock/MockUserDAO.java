@@ -79,6 +79,10 @@ public class MockUserDAO implements UserDAO {
         a.setContactNumber(user.getContactNumber());
     }
 
+    @Override
+    public boolean login(User user) {
+        return false;
+    }
 
 
     public User get(long id) {
