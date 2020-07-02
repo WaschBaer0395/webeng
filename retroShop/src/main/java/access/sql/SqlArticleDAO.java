@@ -18,7 +18,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
     private static final String updateQuery = "UPDATE WebEng.retroShop.Article SET NAME=?, PRICE=?, DESCRIPTION=?, MINPRICE=?, IMAGEPATH=? WHERE ID=?";
     private static final String insertQuery = "INSERT INTO WebEng.retroShop.Article (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, convert(date ,?), ?, ?, ?, ?)";
     private static final String deleteQuery = "DELETE FROM WebEng.retroShop.Article WHERE ID=?";
-
+    private static final String findByStringQuery = "SELECT * FROM WebEng.retroShop.Article WHERE Name LIKE ?";
 
     @Override
     public Article get(long id) {
@@ -138,5 +138,34 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
         }
     }
 
+    @Override
+    public List<Article> searchArticle(String find){
+        List<Article> articles = null;
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(findByStringQuery);
+            statement.setString(1,"%" + find + "%");
+            articles = new ArrayList<Article>();
+            ResultSet results = statement.executeQuery();
+            while (results.next()) {
+                Article a = new Article();
+                a = new Article();
+                a.setId(results.getInt(1));
+                a.setName(results.getString(2));
+                a.setPrice(results.getFloat(3));
+                a.setDesc(results.getString(4));
+                a.setReleaseDate(results.getDate(5).toLocalDate());
+                a.setMinPrice(results.getFloat(6));
+                a.setImagePath(results.getString(7));
+                a.setSellerId(results.getInt(8));
+                articles.add(a);
+            }
+            statement.close();
+            results.close();
+            return articles;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

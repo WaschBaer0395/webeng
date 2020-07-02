@@ -16,4 +16,6 @@ public interface ArticleDAO {
     void update(Article t);
      
     void delete(Article t);
+
+    List<Article> searchArticle(String find);
 }
