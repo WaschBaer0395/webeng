@@ -5,6 +5,7 @@ import access.ArticleDAO;
 import access.DAOFactory;
 import transferobjects.Article;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleManager implements java.io.Serializable {

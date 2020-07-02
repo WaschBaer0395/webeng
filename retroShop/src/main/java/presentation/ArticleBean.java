@@ -87,4 +87,13 @@ public class ArticleBean implements Serializable {
         }
         return articleManager.searchArticle(searchString);
     }
+
+    public List<String> listArticleNames(String s){
+        List<String> articleNames = new ArrayList<String>();
+
+        for(Article a : articleManager.searchArticle(s)){
+            articleNames.add(a.getName());
+        }
+        return articleNames;
+    }
 }
