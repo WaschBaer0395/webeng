@@ -38,8 +38,8 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
 
-                <h:inputText class="form-control mr-sm-2" immediate="true" type="search" placeholder="Search" aria-label="Search" value="#{articleBean.searchString}">
-                    <f:ajax render=":seachArticle" update="seachArticle" event="keyup" listener="#{articleBean.searchedArticle}"/>
+                <h:inputText class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="#{articleBean.searchString}">
+                    <f:ajax render="seachArticle" update=":seachArticle" event="keyup" listener="#{articleBean.searchedArticle}"/>
                 </h:inputText>
             </h:form>
         </div>

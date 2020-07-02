@@ -11,7 +11,7 @@ public interface ArticleDAO {
      
     List<Article> getAll();
 
-    List<Article> searchArticle(String t);
+    List<Article> searchArticle(String find);
      
     void add(Article t);
      
@@ -19,5 +19,5 @@ public interface ArticleDAO {
      
     void delete(Article t);
 
-    List<Article> searchArticle(String find);
+
 }
