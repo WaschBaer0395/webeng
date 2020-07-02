@@ -28,9 +28,11 @@
             <div class="p-field p-grid">
                 <h:outputLabel for="email" styleClass="p-col-fixed" style="width:100px" value="Email"/>
                 <div class="p-col">
-                    <p:inputText id="email" value="#{userBean.user.email}" required="true">
+                    <p:inputText id="email" value="#{userBean.user.email}" requiredMessage="Pflichtfeld." validatorMessage="Email muss richtiges Format haben." required="true">
                         <f:validator validatorId="presentation.EmailValidator"/>
+                        <p:ajax update="emailMessage" event="keyup"/>
                     </p:inputText>
+                    <h:message for="email" id="emailMessage" errorClass="errorStyle" display="icon">Test</h:message>
                 </div>
             </div>
             <div class="p-field p-grid">

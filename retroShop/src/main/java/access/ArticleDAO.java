@@ -10,6 +10,8 @@ public interface ArticleDAO {
     Article get(long id);
      
     List<Article> getAll();
+
+    List<Article> searchArticle(String find);
      
     void add(Article t);
      
@@ -17,5 +19,5 @@ public interface ArticleDAO {
      
     void delete(Article t);
 
-    List<Article> searchArticle(String find);
+
 }
