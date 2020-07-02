@@ -23,6 +23,37 @@
     <!-- <ui:include src="article_list.xhtml"/> -->
 
 
+        <p:dataTable id="seachArticle" var="Article" value="#{articleBean.searchedList}">
+            <p:column headerText="Id">
+                <h:outputText value="#{Article.id}" />
+            </p:column>
+
+            <p:column headerText="Name">
+                <h:outputText value="#{Article.name}" />
+            </p:column>
+
+            <p:column headerText="Price">
+                <h:outputText value="#{Article.price}" />
+            </p:column>
+
+            <p:column headerText="MinPrice">
+                <h:outputText value="#{Article.minPrice}" />
+            </p:column>
+
+            <p:column headerText="Description">
+                <h:outputText value="#{Article.desc}" />
+            </p:column>
+
+            <p:column headerText="ImagePath">
+                <h:outputText value="#{Article.imagePath}" />
+            </p:column>
+
+            <p:column headerText="SellerID">
+                <h:outputText value="#{Article.sellerId}" />
+            </p:column>
+
+        </p:dataTable>
+
 </h:body>
 
 </html>

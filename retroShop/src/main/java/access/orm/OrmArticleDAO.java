@@ -18,7 +18,12 @@ public class OrmArticleDAO extends OrmDaoBase implements ArticleDAO {
     public List<Article> getAll() {
     	return getDatabase().find(Article.class).findList();  
     }
-     
+
+    @Override
+    public List<Article> searchArticle(String t) {
+        return null;
+    }
+
     @Override
     public void add(Article article) {
     	

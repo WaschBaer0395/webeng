@@ -5,20 +5,24 @@ import businesslogic.ArticleManager;
 import transferobjects.Article;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class ArticleBean {
+public class ArticleBean implements Serializable {
 
     ArticleManager articleManager = new ArticleManager();;
     private Article article = new Article();
     private List<Article> articleList;
+    private List<Article> searchedList;
+    private String searchString = "";
 
 
     @PostConstruct
@@ -37,6 +41,8 @@ public class ArticleBean {
     public void setArticleList(List<Article> articleList){
         this.articleList = articleList;
     }
+
+    public List<Article> getSearchedList(){return this.searchedList;}
 
     public List<Article> getArticleList() {
         return this.articleList;
@@ -63,7 +69,22 @@ public class ArticleBean {
         return "";
     }
 
-    public List<Article> searchedArticle(String searchString){
+    public String getSearchString(){
+        return this.searchString;
+    }
+
+    public void setSearchString(String s){
+        System.out.println("setter: " + s);
+        this.searchString = s;
+        System.out.println("updated: " + searchString);
+    }
+
+    public List<Article> searchedArticle(){
+        System.out.println("String: " + searchString);
+        this.searchedList = articleManager.searchArticle(searchString);
+        if(searchString.equals("oca")){
+            System.out.println("debug");
+        }
         return articleManager.searchArticle(searchString);
     }
 }

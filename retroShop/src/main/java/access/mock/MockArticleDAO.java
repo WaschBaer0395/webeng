@@ -90,8 +90,13 @@ public class MockArticleDAO implements ArticleDAO {
     	}
         return copy;
     }
-     
-    @Override
+
+	@Override
+	public List<Article> searchArticle(String t) {
+		return null;
+	}
+
+	@Override
     public void add(Article a) {
     	articles.add(a);
     }
