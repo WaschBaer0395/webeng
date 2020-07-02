@@ -85,6 +85,11 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
     }
 
     @Override
+    public List<Article> searchArticle(String t) {
+        return null;
+    }
+
+    @Override
     public void add(Article a) {
         try {
             PreparedStatement statement = getConnection().prepareStatement(insertQuery);

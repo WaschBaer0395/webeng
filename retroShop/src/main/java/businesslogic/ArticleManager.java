@@ -33,4 +33,8 @@ public class ArticleManager implements java.io.Serializable {
         adao.update(article);
     }
 
+    public List<Article> searchArticle(String searchArticle){
+        return adao.searchArticle(searchArticle);
+    }
+
 }

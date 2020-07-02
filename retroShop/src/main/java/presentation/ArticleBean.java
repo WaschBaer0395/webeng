@@ -23,12 +23,6 @@ public class ArticleBean {
 
     @PostConstruct
     public void init(){
-        /*if (articleManager == null){
-            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext();
-            //DAOFactory.setSer ??????
-            articleManager = new ArticleManager();
-            //articleManager.setDAo();
-        }*/
             articleList = articleManager.getTheArticles();
     }
 
@@ -67,5 +61,9 @@ public class ArticleBean {
         articleManager.deleteArticle(article.getId());
         articleList = articleManager.getTheArticles();
         return "";
+    }
+
+    public List<Article> searchedArticle(String searchString){
+        return articleManager.searchArticle(searchString);
     }
 }
