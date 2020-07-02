@@ -10,9 +10,9 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
 
 
     //private static final String findAllQuery = "SELECT ID,NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID FROM WebEng.retroShop.Article";
-    private static final String findQuery = "SELECT * FROM WebEng.retroShop.Customer WHERE NAME=?";
-    private static final String updateQuery = "UPDATE WebEng.retroShop.Customer SET NAME=?, BIRTHDATE=?, EMAIL=?, CONTACTNUMBER=?, ADRESS=?, PASSWORD=? WHERE ID=?";
-    private static final String insertQuery = "INSERT INTO WebEng.retroShop.Customer (NAME,BIRTHDATE,EMAIL,CONTACTNUMBER,ADDRESS,PASSWORD) VALUES(?, convert(date ,?), ?, ?, ?, ?)";
+    private static final String findQuery = "SELECT * FROM WebEng.retroShop.Customer WHERE USERNAME=?";
+    private static final String updateQuery = "UPDATE WebEng.retroShop.Customer SET USERNAME=?, BIRTHDATE=?, EMAIL=?, CONTACTNUMBER=?, ADRESS=?, PASSWORD=? WHERE ID=?";
+    private static final String insertQuery = "INSERT INTO WebEng.retroShop.Customer (USERNAME,BIRTHDATE,EMAIL,CONTACTNUMBER,ADDRESS,PASSWORD) VALUES(?, convert(date ,?), ?, ?, ?, ?)";
     //private static final String deleteQuery = "DELETE FROM WebEng.retroShop.Article WHERE ID=?";
 
 
@@ -55,7 +55,6 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
     public boolean login(User user) {
 
         try {
-            System.out.println("test");
             PreparedStatement statement = getConnection().prepareStatement(findQuery);
             statement.setString(1, user.getUserName());
             statement.execute();
@@ -71,7 +70,7 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
             e.printStackTrace();
 
         }finally {
-            System.out.println("Test");
+            System.out.println("finally");
         }
         return false;
     }
