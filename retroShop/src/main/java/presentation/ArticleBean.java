@@ -4,6 +4,7 @@ import access.DAOFactory;
 import businesslogic.ArticleManager;
 import transferobjects.Article;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.RequestScoped;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SessionScoped
+@ManagedBean
 @Named
 public class ArticleBean implements Serializable {
 
@@ -69,6 +71,10 @@ public class ArticleBean implements Serializable {
         return "";
     }
 
+    public String toArticleList(){
+        System.out.println("to article list from :" + FacesContext.getCurrentInstance().getViewRoot().getViewId() );
+        return "toArticleList";
+    }
     public String getSearchString(){
         return this.searchString;
     }

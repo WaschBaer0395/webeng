@@ -33,7 +33,7 @@ public class UserBean {
     }
 
     public String loginUser(){
-
-        return "error";
+        System.out.println("test");
+        return "index";
     }
 }

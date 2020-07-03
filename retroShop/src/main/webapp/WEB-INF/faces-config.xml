@@ -1,93 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="2.2"
-			  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-	<application>
-		<locale-config>
-			<default-locale>de</default-locale>
-		</locale-config>
-		<resource-bundle>
-			<base-name>lang.lang</base-name>
-			<var>msg</var>
-		</resource-bundle>
-	</application>
+    <application>
+        <locale-config>
+            <default-locale>de</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>lang.lang</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
 
-	<managed-bean>
-		<description>Holder of all component bindings.</description>
-		<managed-bean-name>components</managed-bean-name>
-		<managed-bean-class>java.util.HashMap</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-	
-	<navigation-rule>
-		<from-view-id>/login_form.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <managed-bean>
+        <description>Holder of all component bindings.</description>
+        <managed-bean-name>components</managed-bean-name>
+        <managed-bean-class>java.util.HashMap</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-	<navigation-rule>
-		<from-view-id>/modify_user_form.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <navigation-rule>
+        <from-view-id>/templates/login_form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
-	<navigation-rule>
-		<from-view-id>/index.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <navigation-rule>
+        <from-view-id>/templates/modify_user_form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
-	<navigation-rule>
-		<from-view-id>/add_article_form.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
-	<navigation-rule>
-		<from-view-id>/modify_article_form.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <navigation-rule>
+        <from-view-id>/templates/add_article_form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/templates/modify_article_form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+		<from-view-id>/welcome.xhtml</from-view-id>
+        <navigation-case>
+			<from-action>#{articleBean.toArticleList}</from-action>
+            <from-outcome>toArticleList</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+			<redirect/>
+        </navigation-case>
+    </navigation-rule>
 
 
-
-	<faces-config-extension>
-		<facelets-processing>
-			<file-extension>.xhtml</file-extension>
-			<process-as>xhtml</process-as>
-		</facelets-processing>
-	</faces-config-extension>
+    <faces-config-extension>
+        <facelets-processing>
+            <file-extension>.xhtml</file-extension>
+            <process-as>xhtml</process-as>
+        </facelets-processing>
+    </faces-config-extension>
 
 </faces-config>

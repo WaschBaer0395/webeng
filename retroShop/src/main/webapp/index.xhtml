@@ -6,53 +6,39 @@
         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        >
 
 
 <h:head>
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"/>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
 </h:head>
 
 <h:body>
-    <ui:include src="_navigation.xhtml"/>
+
+    <ui:include src="templates/_navigation.xhtml"/>
 
 
-    <ui:include src="register_form.xhtml"/>
+    <ui:include src="searchArticle_list.xhtml"/>
     <!-- <ui:include src="modify_user_form.xhtml"/> -->
     <!-- <ui:include src="article_list.xhtml"/> -->
 
 
-        <p:dataTable id="seachArticle" var="Article" value="#{articleBean.searchedList}">
-            <p:column headerText="Id">
-                <h:outputText value="#{Article.id}" />
-            </p:column>
 
-            <p:column headerText="Name">
-                <h:outputText value="#{Article.name}" />
-            </p:column>
 
-            <p:column headerText="Price">
-                <h:outputText value="#{Article.price}" />
-            </p:column>
+    <ui:include src="templates/_footer.xhtml"/>
 
-            <p:column headerText="MinPrice">
-                <h:outputText value="#{Article.minPrice}" />
-            </p:column>
-
-            <p:column headerText="Description">
-                <h:outputText value="#{Article.desc}" />
-            </p:column>
-
-            <p:column headerText="ImagePath">
-                <h:outputText value="#{Article.imagePath}" />
-            </p:column>
-
-            <p:column headerText="SellerID">
-                <h:outputText value="#{Article.sellerId}" />
-            </p:column>
-
-        </p:dataTable>
 
 </h:body>
 

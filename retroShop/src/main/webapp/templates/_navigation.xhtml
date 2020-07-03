@@ -1,0 +1,65 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+>
+
+    <style>
+        .active-black-2 input.form-control[type="search"]:focus:not([readonly]) {
+            border-bottom: 1px solid #000000;
+            box-shadow: 0 1px 0 0 #000000;
+        }
+
+        .md-form input[type="search"]:not(.browser-default):focus:not([readonly]){
+            border-bottom: 1px solid #000000!important;
+            box-shadow: 0 1px 0 0 #000000!important;
+        }
+    </style>
+
+
+    <nav class="mb-1 navbar navbar-expand-lg navbar-light info-color">
+        <a class="navbar-brand" href="#">RetroShop</a>
+        <h:button class="mdl-button mdl-js-button mdl-js-ripple-effect" value="Overview" outcome="index" icon="pi pi-star">
+        </h:button>
+        <h:button class="mdl-button mdl-js-button mdl-js-ripple-effect" value="Demos" outcome="index" icon="pi pi-search">
+        </h:button>
+        <h:button class="mdl-button mdl-js-button mdl-js-ripple-effect" value="Documentation" outcome="index"
+                  icon="pi pi-file">
+        </h:button>
+        <h:button class="mdl-button mdl-js-button mdl-js-ripple-effect" value="Support" outcome="index" icon="pi pi-briefcase">
+        </h:button>
+        <h:button class="mdl-button mdl-js-button mdl-js-ripple-effect" value="Social" outcome="index" icon="pi pi-user">
+        </h:button>
+
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <h:form class="form-inline d-flex md-form form-sm active-black-2 mt-2">
+                        <p:autoComplete class="" id="acMaxResults" maxResults="8" size="30" type="search" placeholder="Search" aria-label="Search"
+                                        completeMethod="#{articleBean.listArticleNames}"
+                                        value="#{articleBean.searchString}">
+                            <f:ajax render="searchArticle" update=":searchArticle" event="itemSelect"
+                                     listener="#{articleBean.toArticleList}"/>
+                            <f:ajax render="searchArticle" update=":searchArticle" event="keyup"
+                                    listener="#{articleBean.searchedArticle}"/>
+                        </p:autoComplete>
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </h:form>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Profil </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                        <a class="dropdown-item" href="#">Mein Profil</a>
+                        <a class="dropdown-item" href="#">Ausloggen</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</ui:composition>
