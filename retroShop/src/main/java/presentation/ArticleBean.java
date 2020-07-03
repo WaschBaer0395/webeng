@@ -1,13 +1,12 @@
 package presentation;
 
-import access.DAOFactory;
 import businesslogic.ArticleManager;
 import transferobjects.Article;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
@@ -15,7 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean
 @Named
 public class ArticleBean implements Serializable {
@@ -30,6 +29,7 @@ public class ArticleBean implements Serializable {
     @PostConstruct
     public void init(){
             articleList = articleManager.getTheArticles();
+            searchedList = articleList;
     }
 
     public void setArticle(Article a){
@@ -85,13 +85,10 @@ public class ArticleBean implements Serializable {
         System.out.println("updated: " + searchString);
     }
 
-    public List<Article> searchedArticle(){
-        System.out.println("String: " + searchString);
+    public String searchedArticle(){
         this.searchedList = articleManager.searchArticle(searchString);
-        if(searchString.equals("oca")){
-            System.out.println("debug");
-        }
-        return articleManager.searchArticle(searchString);
+        articleManager.searchArticle(searchString);
+        return "searchedList";
     }
 
     public List<String> listArticleNames(String s){

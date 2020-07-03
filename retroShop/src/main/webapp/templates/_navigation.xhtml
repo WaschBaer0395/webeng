@@ -39,12 +39,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <h:form class="form-inline d-flex md-form form-sm active-black-2 mt-2">
-                        <p:autoComplete class="" id="acMaxResults" maxResults="8" size="30" type="search" placeholder="Search" aria-label="Search"
+                        <p:autoComplete id="acMaxResults" maxResults="8" size="30" type="search" placeholder="Search" aria-label="Search"
                                         completeMethod="#{articleBean.listArticleNames}"
                                         value="#{articleBean.searchString}">
-                            <f:ajax render="searchArticle" update=":searchArticle" event="itemSelect"
-                                     listener="#{articleBean.toArticleList}"/>
-                            <f:ajax render="searchArticle" update=":searchArticle" event="keyup"
+                            <f:ajax render="searchArticle" event="itemSelect"
+                                    listener="#{articleBean.searchedArticle}"/>
+                            <f:ajax render="searchArticle" event="keyup"
                                     listener="#{articleBean.searchedArticle}"/>
                         </p:autoComplete>
                         <i class="fas fa-search" aria-hidden="true"></i>
