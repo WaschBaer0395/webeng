@@ -2,6 +2,7 @@ package presentation;
 
 import businesslogic.ArticleManager;
 import transferobjects.Article;
+import transferobjects.User;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -19,7 +20,7 @@ import java.util.List;
 @Named
 public class ArticleBean implements Serializable {
 
-    ArticleManager articleManager = new ArticleManager();;
+    private ArticleManager articleManager = new ArticleManager();;
     private Article article = new Article();
     private List<Article> articleList;
     private List<Article> searchedList;

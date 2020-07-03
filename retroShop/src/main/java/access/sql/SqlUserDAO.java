@@ -5,6 +5,7 @@ import transferobjects.User;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class SqlUserDAO extends SqlDaoBase implements UserDAO {
 
@@ -13,6 +14,7 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
     private static final String findQuery = "SELECT * FROM WebEng.retroShop.Customer WHERE USERNAME=?";
     private static final String updateQuery = "UPDATE WebEng.retroShop.Customer SET USERNAME=?, BIRTHDATE=?, EMAIL=?, CONTACTNUMBER=?, ADRESS=?, PASSWORD=? WHERE ID=?";
     private static final String insertQuery = "INSERT INTO WebEng.retroShop.Customer (USERNAME,BIRTHDATE,EMAIL,CONTACTNUMBER,ADDRESS,PASSWORD) VALUES(?, convert(date ,?), ?, ?, ?, ?)";
+    private static final String findUserByIdQuery = "SELECT * FROM WebEng.retroShop.Customer WHERE USERID = ?";
     //private static final String deleteQuery = "DELETE FROM WebEng.retroShop.Article WHERE ID=?";
 
 
@@ -73,5 +75,34 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
             System.out.println("finally");
         }
         return false;
+    }
+
+    @Override
+    public User findUserById(long id){
+        User u = new User();
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(findUserByIdQuery);
+
+            statement.setLong(1, id);
+
+            ResultSet results = statement.executeQuery();
+            if (results.next()) {
+                u = new User();
+                u.setId(results.getInt(1));
+                u.setUserName(results.getString(2));
+                u.setBirthDate(results.getDate(3).toLocalDate());
+                u.setEmail(results.getString(4));
+                u.setContactNumber(results.getString(5));
+                u.setAddress(results.getString(6));
+            }
+
+            statement.close();
+            results.close();
+            return u;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return null;
     }
 }

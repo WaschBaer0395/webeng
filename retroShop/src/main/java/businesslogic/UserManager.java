@@ -18,6 +18,9 @@ public class UserManager implements Serializable {
         userDao.update(user);
     }
 
+    public User getUserById(long id){
+        return userDao.findUserById(id);
+    }
 
     public boolean loginUser(User user){
         return userDao.login(user);

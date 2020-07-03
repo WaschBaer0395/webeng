@@ -4,13 +4,16 @@ package presentation;
 import businesslogic.UserManager;
 import transferobjects.User;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@ManagedBean
 @Named
 @RequestScoped
-public class UserBean {
+public class UserBean implements Serializable {
 
     private UserManager userManager = new UserManager();
     private User user = new User();
@@ -36,4 +39,9 @@ public class UserBean {
         System.out.println("test");
         return "index";
     }
+
+    public User getuserById(long id){
+        return userManager.getUserById(id);
+    }
+
 }

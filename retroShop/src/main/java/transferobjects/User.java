@@ -22,7 +22,7 @@ public class User {
 
     private long id;
     private String userName;
-    private String birthDate;
+    private LocalDate birthDate;
     private String email;
     private String contactNumber;
     private String address;
@@ -33,8 +33,8 @@ public class User {
     public long getId(){return this.id;}
     public void setUserName(String userName){this.userName=userName;}
     public String getUserName(){return this.userName;}
-    public void setBirthDate(String birthDate){this.birthDate=birthDate;}
-    public String getBirthDate(){return this.birthDate;}
+    public void setBirthDate(LocalDate birthDate){this.birthDate=birthDate;}
+    public LocalDate getBirthDate(){return this.birthDate;}
     public void setEmail(String email){this.email=email;}
     public String getEmail(){return this.email;}
     public void setContactNumber(String contactNumber){this.contactNumber=contactNumber;}

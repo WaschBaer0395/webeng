@@ -4,39 +4,52 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:p="http://primefaces.org/ui">
+<style>
+    .detail {
+        width: 75%;
+        padding-left: 25px;
+    }
+
+    .detail td {
+        font-size: 12px;
+    }
+
+    .ui-datascroller .ui-datascroller-item {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+</style>
 
 
 
+    <p:dataScroller class="w-75 p-3 mx-auto" id="searchArticle" chunkSize="4" var="Article" value="#{articleBean.searchedList}">
+        <f:facet name="header">
+            Scroll Down to Load More Articles
+        </f:facet>
 
+        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+            <p:graphicImage class="img-thumbnail" style="max-height: 200px; max-width: 200px" url="#{Article.imagePath}" />
 
-    <p:dataTable id="searchArticle" var="Article" value="#{articleBean.searchedList}">
-        <p:column headerText="Id">
-            <h:outputText value="#{Article.id}" />
-        </p:column>
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Name:" />
+                    <h:outputText value="#{Article.name}" style="font-weight: bold"/>
 
-        <p:column headerText="Name">
-            <h:outputText value="#{Article.name}" />
-        </p:column>
+                    <h:outputText value="Preis:" />
+                    <h:outputText value="#{Article.price} EUR" style="font-weight: bold"/>
 
-        <p:column headerText="Price">
-            <h:outputText value="#{Article.price}" />
-        </p:column>
+                    <h:outputText value="eingestellt von:" />
+                    <h:outputText value="#{userBean.getuserById(Article.sellerId).getUserName()}" style="font-weight: normal"/>
 
-        <p:column headerText="MinPrice">
-            <h:outputText value="#{Article.minPrice}" />
-        </p:column>
+                    <h:outputText value="eingestellt am:" />
+                    <h:outputText value="#{Article.releaseDate}" style="font-weight: lighter"/>
 
-        <p:column headerText="Description">
-            <h:outputText value="#{Article.desc}" />
-        </p:column>
-
-        <p:column headerText="ImagePath">
-            <h:outputText value="#{Article.imagePath}" />
-        </p:column>
-
-        <p:column headerText="SellerID">
-            <h:outputText value="#{Article.sellerId}" />
-        </p:column>
-    </p:dataTable>
-
+                    <h:outputText value="Beschreibung:" />
+                    <h:outputText value="#{Article.desc}" style="font-weight: lighter"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
 </ui:composition>

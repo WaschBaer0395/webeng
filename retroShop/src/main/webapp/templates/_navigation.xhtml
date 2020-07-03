@@ -43,11 +43,12 @@
                                         completeMethod="#{articleBean.listArticleNames}"
                                         value="#{articleBean.searchString}">
                             <f:ajax render="searchArticle" event="itemSelect"
-                                    listener="#{articleBean.searchedArticle}"/>
+                                    listener="#{articleBean.searchedArticle}" />
                             <f:ajax render="searchArticle" event="keyup"
                                     listener="#{articleBean.searchedArticle}"/>
                         </p:autoComplete>
                         <i class="fas fa-search" aria-hidden="true"></i>
+                        <h:commandButton id="myButton" style="display: none;" action="#{articleBean.searchedArticle}" ></h:commandButton>
                     </h:form>
                 </li>
                 <li class="nav-item dropdown">
