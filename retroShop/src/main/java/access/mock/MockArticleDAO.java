@@ -117,6 +117,10 @@ public class MockArticleDAO implements ArticleDAO {
     	articles.remove(a);
     }
 
+	@Override
+	public List<Article> getUserArticleList(long id) {
+		return null;
+	}
 
 
 }

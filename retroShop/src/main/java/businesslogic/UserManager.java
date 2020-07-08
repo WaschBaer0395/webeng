@@ -2,9 +2,11 @@ package businesslogic;
 
 import access.DAOFactory;
 import access.UserDAO;
+import transferobjects.Article;
 import transferobjects.User;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserManager implements Serializable {
 
@@ -22,7 +24,7 @@ public class UserManager implements Serializable {
         return userDao.findUserById(id);
     }
 
-    public boolean loginUser(User user){
+    public User loginUser(User user){
         return userDao.login(user);
     }
 }

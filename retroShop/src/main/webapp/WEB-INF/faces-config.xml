@@ -45,6 +45,12 @@
             <from-outcome>logout</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
+
+        <navigation-case>
+            <from-action>#{userBean.myProfile}</from-action>
+            <from-outcome>myProfile</from-outcome>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
@@ -119,5 +125,4 @@
             <process-as>xhtml</process-as>
         </facelets-processing>
     </faces-config-extension>
-
 </faces-config>

@@ -1,11 +1,13 @@
 package access.sql;
 
 import access.UserDAO;
+import transferobjects.Article;
 import transferobjects.User;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 public class SqlUserDAO extends SqlDaoBase implements UserDAO {
 
@@ -54,25 +56,32 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
     }
 
     @Override
-    public boolean login(User user) {
-
+    public User login(User user) {
+        User u = null;
         try {
             PreparedStatement statement = getConnection().prepareStatement(findQuery);
             statement.setString(1, user.getUserName());
-            statement.execute();
-            //statement.close();
+            ResultSet results = statement.executeQuery();
 
-            if (statement.getResultSet().next()) {
+            if (results.next()) {
                 if (user.getPassword().equals(statement.getResultSet().getString("password"))) {
+                    u = new User();
+                    u.setId(results.getInt(1));
+                    u.setUserName(results.getString(2));
+                    u.setBirthDate(results.getDate(3).toLocalDate());
+                    u.setEmail(results.getString(4));
+                    u.setContactNumber(results.getString(5));
+                    u.setAddress(results.getString(6));
+
                     statement.close();
-                    return true;
+                    return u;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        return false;
+        return u;
     }
 
     @Override
@@ -103,4 +112,5 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
         }
         return null;
     }
+
 }

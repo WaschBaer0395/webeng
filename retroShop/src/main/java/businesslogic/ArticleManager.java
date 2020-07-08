@@ -38,4 +38,8 @@ public class ArticleManager implements java.io.Serializable {
         return adao.searchArticle(searchArticle);
     }
 
+    public List<Article> getUserArticleList(long id) {
+        return adao.getUserArticleList(id);
+    }
+
 }

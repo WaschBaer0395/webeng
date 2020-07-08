@@ -19,5 +19,7 @@ public interface ArticleDAO {
      
     void delete(Article t);
 
+    List<Article> getUserArticleList(long id);
+
 
 }

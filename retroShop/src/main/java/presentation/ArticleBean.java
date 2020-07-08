@@ -1,6 +1,7 @@
 package presentation;
 
 import businesslogic.ArticleManager;
+import businesslogic.SessionUtils;
 import transferobjects.Article;
 import transferobjects.User;
 
@@ -11,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class ArticleBean implements Serializable {
     private Article article = new Article();
     private List<Article> articleList;
     private List<Article> searchedList;
+    private List<Article> userArticleList;
     private String searchString = "";
     private Article currentArticle = new Article();
 
@@ -89,7 +92,6 @@ public class ArticleBean implements Serializable {
 
     public String searchedArticle(){
         this.searchedList = articleManager.searchArticle(searchString);
-        articleManager.searchArticle(searchString);
         return "searchedList";
     }
 
@@ -115,4 +117,18 @@ public class ArticleBean implements Serializable {
         }
         return "detail";
     }
+
+    public void sellerArticleList(long id) {
+        userArticleList =  articleManager.getUserArticleList(id);
+    }
+
+    public List<Article> getUserArticleList(){
+        HttpSession session = SessionUtils.getSession();
+        User user = (User)session.getAttribute("user");
+        long userID = user.getId();
+        sellerArticleList(userID);
+        return this.userArticleList;
+    }
+
+
 }

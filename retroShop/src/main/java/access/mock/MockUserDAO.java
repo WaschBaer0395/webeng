@@ -79,8 +79,8 @@ public class MockUserDAO implements UserDAO {
     }
 
     @Override
-    public boolean login(User user) {
-        return false;
+    public User login(User user) {
+        return null;
     }
 
     @Override

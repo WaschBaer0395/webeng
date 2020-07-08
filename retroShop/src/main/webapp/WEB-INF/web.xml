@@ -5,7 +5,6 @@
 	id="retroShop" version="3.1">
 	<display-name>"retroShop"</display-name>
 
-
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>nova-light</param-value>
@@ -86,5 +85,4 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-
 </web-app>

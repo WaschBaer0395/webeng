@@ -23,21 +23,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <ui:include src="templates/_navigation.xhtml"/>
+    <ui:include src="../templates/_navigation.xhtml"/>
     <div class="container mt-3">
         <div class="row">
             <div class="col-8">
                 <div class="card">
-                    <ui:include src="article_list.xhtml"/>
+                    <ui:include src="../userArticle_list.xhtml"/>
                 </div>
             </div>
             <div class="col-4">
                 <div class="card" style="width: 90%;">
                     <div class="card-body">
-                        <h3 class="card-title">Saoirse Ronan</h3>
-                        <p><b>E-Mail: </b>mail mail</p>
-                        <p><b>Geburtstag: </b>03.04.2999</p>
-                        <p><b>Telefonnummer: </b>0101010101</p>
+                        <h3 class="card-title">#{userBean.user.userName}</h3>
+                        <p><b>E-Mail: </b>#{userBean.user.email}</p>
+                        <p><b>Geburtstag: </b>#{userBean.user.birthDate}</p>
+                        <p><b>Telefonnummer: </b>#{userBean.user.contactNumber}</p>
                         <div class="text-center">
                             <button type="button" class="btn btn-outline-info"><i
                                     class="fas fa-pencil-square"></i> Bearbeiten
@@ -55,6 +55,6 @@
             </div>
         </div>
     </div>
-    <ui:include src="templates/_footer.xhtml"/>
+    <ui:include src="../templates/_footer.xhtml"/>
 </h:body>
 </html>

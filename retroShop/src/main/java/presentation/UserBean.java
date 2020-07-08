@@ -3,6 +3,7 @@ package presentation;
 
 import businesslogic.SessionUtils;
 import businesslogic.UserManager;
+import transferobjects.Article;
 import transferobjects.User;
 
 import javax.annotation.ManagedBean;
@@ -12,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ManagedBean
@@ -43,9 +45,13 @@ public class UserBean implements Serializable {
         HttpSession session = SessionUtils.getSession();
 
         if(session.getAttribute("username") == null) {
-            if (userManager.loginUser(user)) {
+            if (userManager.loginUser(user) != null) {
+                user = userManager.loginUser(user);
                 System.out.println("User eingeloggt " + FacesContext.getCurrentInstance().getViewRoot().getViewId());
+                session.setAttribute("user", user);
                 session.setAttribute("username", user.getUserName());
+                session.setAttribute("userid",user.getId());
+
                 return "success";
             }
             else{
@@ -67,6 +73,10 @@ public class UserBean implements Serializable {
 
     public User getuserById(long id){
         return userManager.getUserById(id);
+    }
+
+    public String myProfile(){
+        return "myProfile";
     }
 
 }

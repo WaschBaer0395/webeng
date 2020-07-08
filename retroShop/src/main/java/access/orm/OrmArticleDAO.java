@@ -41,4 +41,9 @@ public class OrmArticleDAO extends OrmDaoBase implements ArticleDAO {
     	
     	getDatabase().delete(article);  
     }
+
+    @Override
+    public List<Article> getUserArticleList(long id) {
+        return null;
+    }
 }
