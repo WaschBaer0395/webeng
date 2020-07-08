@@ -25,6 +25,7 @@ public class ArticleBean implements Serializable {
     private List<Article> articleList;
     private List<Article> searchedList;
     private String searchString = "";
+    private Article currentArticle = new Article();
 
 
     @PostConstruct
@@ -102,5 +103,16 @@ public class ArticleBean implements Serializable {
 
         }
         return articleNames;
+    }
+
+    public String goToDetail(long id){
+        currentArticle = null;
+        if( articleManager.getArticle(id) != null){
+            currentArticle = articleManager.getArticle(id);
+        }
+        else{
+            return "articleNotFound";
+        }
+        return "detail";
     }
 }

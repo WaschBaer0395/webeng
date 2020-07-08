@@ -20,7 +20,7 @@ public class ArticleManager implements java.io.Serializable {
         adao.add(article);
     }
 
-    public Article getArticle(int id){
+    public Article getArticle(long id){
         return adao.get(id);
     }
 

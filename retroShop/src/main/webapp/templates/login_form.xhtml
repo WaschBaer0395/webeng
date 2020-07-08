@@ -5,23 +5,23 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
 >
-    <h:form action="">
+    <h:form  class="dropdown-item" action="">
         <div class="col-sm">
             <div class="p-field p-grid">
                 <h:outputLabel for="userName" styleClass="p-col-fixed" style="width:100px" value="Username: "/>
                 <div class="p-col">
-                    <p:inputText id="userName" value="#{userBean.user.userName}" required="true"/>
+                    <p:inputText class="form-control" id="userName" value="#{userBean.user.userName}" required="true"/>
                 </div>
             </div>
             <div class="p-field p-grid">
                 <h:outputLabel for="password" styleClass="p-col-fixed" style="width:100px"
                                value="Passwort: "/>
                 <div class="p-col">
-                    <p:inputText id="password" value="#{userBean.user.password}" required="true"/>
+                    <p:inputText class="form-control" id="password" value="#{userBean.user.password}" required="true"/>
                 </div>
             </div>
             <div class="p-field p-grid">
-                <h:commandButton action="#{userBean.loginUser}"  ajax="false" type="submit" value="Login" style="margin-top:20px"/>
+                <h:commandButton class="btn btn-success" action="#{userBean.loginUser}"  ajax="false" type="submit" value="Login" style="margin-top:20px"/>
             </div>
         </div>
     </h:form>

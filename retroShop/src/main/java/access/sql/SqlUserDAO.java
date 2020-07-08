@@ -62,7 +62,7 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
             statement.execute();
             //statement.close();
 
-            if (statement.getResultSet().first()) {
+            if (statement.getResultSet().next()) {
                 if (user.getPassword().equals(statement.getResultSet().getString("password"))) {
                     statement.close();
                     return true;
@@ -71,8 +71,6 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
 
-        }finally {
-            System.out.println("finally");
         }
         return false;
     }
