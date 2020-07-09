@@ -5,32 +5,56 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
 >
-            <h:form action="">
+            <h:form class="m-4" action="">
                 <div class="col-sm">
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="userName" styleClass="p-col-fixed" style="width:100px" value="Username"/>
-                        <div class="p-col">
-                            <p:inputText id="userName" value="#{userBean.user.userName}" required="true"/>
-                        </div>
-                    </div>
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="password" styleClass="p-col-fixed" style="width:100px" value="Passwort"/>
-                        <div class="p-col">
-                            <p:password id="password" value="#{userBean.user.password}" required="true"/>
-                        </div>
-                    </div>
                     <div class="p-field p-grid">
                         <h:outputLabel for="birthDate" styleClass="p-col-fixed" style="width:100px"
                                        value="Geburtsdatum"/>
                         <div class="p-col">
-                            <p:inputText id="birthDate" value="#{userBean.user.birthDate}" required="true"/>
+                            <p:inputText type="date" id="birthDate" value="#{userBean.user.birthDate}" required="true"/>
                         </div>
                     </div>
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="address" styleClass="p-col-fixed" style="width:100px" value="Addresse"/>
-                        <div class="p-col">
-                            <p:inputText id="address" value="#{userBean.user.address}" required="true"/>
+
+                    <div class="form-row">
+                        <div class="col-md-9 mb-3">
+                            <h:outputLabel for="street">Straße</h:outputLabel>
+                            <p:inputText class="form-control" id="street" value="#{userBean.address.street}" required="true"></p:inputText>
                         </div>
+                        <div class="col-md-3 mb-3">
+                            <h:outputLabel for="housenumber">Nr.</h:outputLabel>
+                            <p:inputText class="form-control" id="housenumber" value="#{userBean.address.houseNumber}" required="true"></p:inputText>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <h:outputLabel for="city">Stadt</h:outputLabel>
+                            <p:inputText class="form-control" id="city" value="#{userBean.address.city}" required="true"></p:inputText>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h:outputLabel for="zipcode">PLZ</h:outputLabel>
+                            <p:inputText class="form-control" id="zipcode" value="#{userBean.address.zipCode}" required="true"></p:inputText>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <p:outputLabel for="region" value="Bundesland" />
+                        <p:selectOneMenu id="region" value="#{userBean.address.region}">
+                            <f:selectItem itemLabel="Nordrhein-Westfalen" itemValue="Nordrhein-Westfalen" />
+                            <f:selectItem itemLabel="Berlin" itemValue="Berlin" />
+                            <f:selectItem itemLabel="Hamburg" itemValue="Hamburg" />
+                            <f:selectItem itemLabel="Mecklenburg-Vorpommern" itemValue="Mecklenburg-Vorpommern" />
+                            <f:selectItem itemLabel="Sachsen-Anhalt" itemValue="Sachsen-Anhalt" />
+                            <f:selectItem itemLabel="Bayern" itemValue="Bayern" />
+                            <f:selectItem itemLabel="Thüringen" itemValue="Thüringen" />
+                            <f:selectItem itemLabel="Niedersachsen" itemValue="Niedersachsen" />
+                            <f:selectItem itemLabel="Baden-Württemberg" itemValue="Baden-Württemberg" />
+                            <f:selectItem itemLabel="Hessen" itemValue="Hessen" />
+                            <f:selectItem itemLabel="Bremen" itemValue="Bremen" />
+                            <f:selectItem itemLabel="Sachsen" itemValue="Sachsen" />
+                            <f:selectItem itemLabel="Saarland" itemValue="Saarland" />
+                            <f:selectItem itemLabel="Schleswig-Holstein" itemValue="Schleswig-Holstein" />
+                            <f:selectItem itemLabel="Rheinland-Pfalz" itemValue="Rheinland-Pfalz" />
+                            <f:selectItem itemLabel="Brandenburg" itemValue="Brandenburg" />
+                        </p:selectOneMenu>
                     </div>
                     <div class="p-field p-grid">
                         <h:outputLabel for="email" styleClass="p-col-fixed" style="width:100px" value="Email"/>
@@ -47,7 +71,7 @@
                         <div class="p-col">
                             <p:inputText id="contactNumber" value="#{userBean.user.contactNumber}" required="true"/>
                         </div>
-                        <h:commandButton action="#{userBean.updateUser}" type="submit" value="Update" style="margin-top:20px"/>
+                        <h:commandButton class="btn btn-info" action="#{userBean.updateUser}" type="submit" value="Update" style="margin-top:20px"/>
                     </div>
                 </div>
             </h:form>

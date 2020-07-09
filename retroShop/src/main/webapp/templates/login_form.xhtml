@@ -8,9 +8,9 @@
     <h:form  prependId="false" class="dropdown-item" action="">
         <div class="col-sm">
             <div class="p-field p-grid">
-                <h:outputLabel for="userName" styleClass="p-col-fixed" style="width:100px" value="Username: "/>
+                <h:outputLabel for="username" styleClass="p-col-fixed" style="width:100px" value="Username: "/>
                 <div class="p-col">
-                    <p:inputText class="form-control" id="userName" value="#{userBean.user.userName}" required="true"/>
+                    <p:inputText class="form-control" id="username" value="#{userBean.user.userName}" required="true"/>
                 </div>
             </div>
             <div class="p-field p-grid">
@@ -21,7 +21,8 @@
                 </div>
             </div>
             <div class="p-field p-grid">
-                <h:commandButton class="btn btn-success" action="#{userBean.loginUser}"  ajax="false" type="submit" value="Login" style="margin-top:20px"/>
+                <h:commandButton class="btn btn-success" action="#{userBean.loginUser}"  ajax="false" type="submit" value="Anmelden" style="margin-top:20px"/>
+                <h:commandButton class="btn btn-link" action="#{userBean.registerUser}" value="Registrieren" immediate="true" style="margin-top:20px"/>
             </div>
         </div>
     </h:form>

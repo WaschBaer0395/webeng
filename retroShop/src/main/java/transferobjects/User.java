@@ -21,20 +21,25 @@ public class User {
 
 
     private long id;
-    private String userName;
-    private LocalDate birthDate;
-    private String email;
-    private String contactNumber;
-    private String address;
-    private String password;
+    private String userName ="";
+    private LocalDate birthDate = LocalDate.of(Integer.parseInt("2000"), Integer.parseInt("01"), Integer.parseInt("01"));
+    private String email ="";
+    private String contactNumber ="";
+    private String address = "";
+    private String password = "";
 
 
     public void setId(long id){this.id = id;}
     public long getId(){return this.id;}
     public void setUserName(String userName){this.userName=userName;}
     public String getUserName(){return this.userName;}
-    public void setBirthDate(LocalDate birthDate){this.birthDate=birthDate;}
-    public LocalDate getBirthDate(){return this.birthDate;}
+    public void setBirthDate(String birthDate){
+        LocalDate localDate = LocalDate.parse(birthDate);
+        this.birthDate=localDate;
+    }
+    public String getBirthDate(){
+        return this.birthDate.toString();
+    }
     public void setEmail(String email){this.email=email;}
     public String getEmail(){return this.email;}
     public void setContactNumber(String contactNumber){this.contactNumber=contactNumber;}

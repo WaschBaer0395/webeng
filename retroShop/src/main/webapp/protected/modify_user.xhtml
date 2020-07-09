@@ -32,23 +32,8 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                        <h3 class="card-title">#{userBean.user.userName}</h3>
-                        <p><b>E-Mail: </b>#{userBean.user.email}</p>
-                        <p><b>Geburtstag: </b>#{userBean.user.birthDate}</p>
-                        <p><b>Telefonnummer: </b>#{userBean.user.contactNumber}</p>
-                        <p><b>Adresse: </b></p>
-                        <p class="ml-3"><b>Straße: </b>#{userBean.address.street} #{userBean.address.houseNumber}</p>
-                        <p class="ml-3"><b>Stadt: </b>#{userBean.address.city}</p>
-                        <p class="ml-3"><b>Plz: </b>#{userBean.address.zipCode}</p>
-                        <p class="ml-3"><b>Region: </b>#{userBean.address.region}</p>
-
-                        <div class="text-center">
-                            <h:button type="button" class="btn btn-outline-info" outcome="updateProfile" value="Bearbeiten" icon="pi pi-pencil">
-                            </h:button>
-                        </div>
-                    </div>
+                <div class="card" style="width: 110%;">
+                    <ui:include src="../templates/modify_user_form.xhtml"></ui:include>
                 </div>
                 <div class="card mt-3 btn-outline-success" style="width: 90%">
                     <div class="text-center">

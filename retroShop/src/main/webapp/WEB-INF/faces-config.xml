@@ -29,12 +29,13 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
         <from-view-id>/*</from-view-id>
+
         <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>/templates/login_form.xhtml</to-view-id>
@@ -51,17 +52,40 @@
             <from-outcome>myProfile</from-outcome>
             <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{userBean.updateUser}</from-action>
+            <from-outcome>myProfile</from-outcome>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>articleDetail</from-outcome>
+            <to-view-id>/protected/detail_article.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
         <from-view-id>/templates/modify_user_form.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/register.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
@@ -69,11 +93,23 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-action>#{userBean.registerUser}</from-action>
+            <from-outcome>registerUser</from-outcome>
+            <to-view-id>/register.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-action>#{articleBean.goToDetail}</from-action>
+            <from-outcome>articleDetail</from-outcome>
+            <to-view-id>/protected/detail_article.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
@@ -81,11 +117,11 @@
         <from-view-id>/templates/add_article_form.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
@@ -93,14 +129,21 @@
         <from-view-id>/templates/modify_article_form.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/welcome.xhtml</to-view-id>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
+    <navigation-rule>
+        <from-view-id>/protected/myProfile.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>updateProfile</from-outcome>
+            <to-view-id>/protected/modify_user.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -108,16 +151,6 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-
-    <navigation-rule>
-		<from-view-id>/welcome.xhtml</from-view-id>
-        <navigation-case>
-			<from-action>#{articleBean.searchedArticle}</from-action>
-            <from-outcome>searchedList</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-
 
     <faces-config-extension>
         <facelets-processing>

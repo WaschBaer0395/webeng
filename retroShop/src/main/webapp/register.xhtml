@@ -6,21 +6,57 @@
         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
-
-
+        xmlns:p="http://primefaces.org/ui"
+>
 <h:head>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"/>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
 </h:head>
-
 <h:body>
     <ui:include src="templates/_navigation.xhtml"/>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <div class="container">
+                            <h:form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <ui:include src="templates/register_form.xhtml"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ui:include src="templates/address_form.xhtml"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h:commandButton class="btn btn-outline-danger" type="reset" value="Reset"
+                                                         style="fmargin-top:20px; margin-right: 10px"/>
+                                        <h:commandButton class="btn btn-success" action="#{userBean.saveUser}"
+                                                         type="submit" value="Registrieren" style="fmargin-top:20px"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
 
-
-    <ui:include src="searchArticle_list.xhtml"/>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <ui:include src="templates/_footer.xhtml"/>
 </h:body>
-
 </html>

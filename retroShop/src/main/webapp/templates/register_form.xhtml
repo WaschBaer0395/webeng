@@ -5,27 +5,27 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
 >
-    <h:form>
+
         <div class="col-sm">
-            <div class="p-field p-grid">
+            <div class="p-field p-grid mb-3">
                 <h:outputLabel for="userName" styleClass="p-col-fixed" style="width:100px" value="Username"/>
                 <div class="p-col">
                     <p:inputText id="userName" value="#{userBean.user.userName}" required="true"/>
                 </div>
             </div>
-            <div class="p-field p-grid">
+            <div class="p-field p-grid mb-3">
                 <h:outputLabel for="password" styleClass="p-col-fixed" style="width:100px" value="Passwort"/>
                 <div class="p-col">
                     <p:password id="password" value="#{userBean.user.password}" required="true"/>
                 </div>
             </div>
-            <div class="p-field p-grid">
+            <div class="p-field p-grid mb-3">
                 <h:outputLabel for="birthDate" styleClass="p-col-fixed" style="width:100px" value="Geburtsdatum"/>
                 <div class="p-col">
                     <p:inputText type="date" id="birthDate" value="#{userBean.user.birthDate}" required="true"/>
                 </div>
             </div>
-            <div class="p-field p-grid">
+            <div class="p-field p-grid mb-3">
                 <h:outputLabel for="email" styleClass="p-col-fixed" style="width:100px" value="Email"/>
                 <div class="p-col">
                     <p:inputText id="email" value="#{userBean.user.email}" requiredMessage="Pflichtfeld." validatorMessage="Email muss richtiges Format haben." required="true">
@@ -35,14 +35,12 @@
                     <h:message for="email" id="emailMessage" errorClass="errorStyle" display="icon">Test</h:message>
                 </div>
             </div>
-            <div class="p-field p-grid">
+            <div class="p-field p-grid mb-3">
                 <h:outputLabel for="contactNumber" styleClass="p-col-fixed" style="width:100px" value="Telefonnummer"/>
                 <div class="p-col">
                     <p:inputText id="contactNumber" value="#{userBean.user.contactNumber}" required="true"/>
                 </div>
-                <h:commandButton type="reset" value="Reset" style="margin-top:20px; margin-right: 10px"/>
-                <h:commandButton action="#{userBean.saveUser}" type="submit" value="Registrieren" style="margin-top:20px"/>
-            </div>
+              </div>
         </div>
-    </h:form>
+
 </ui:composition>

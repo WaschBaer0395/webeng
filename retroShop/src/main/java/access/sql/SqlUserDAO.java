@@ -40,6 +40,7 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
     @Override
     public void update(User user) {
         try {
+            connection.setAutoCommit(false);
             PreparedStatement statement = getConnection().prepareStatement(updateQuery);
             statement.setString(1, user.getUserName());
             statement.setDate(2, Date.valueOf(user.getBirthDate()));
@@ -48,7 +49,8 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
             statement.setString(5, user.getAddress());
             statement.setString(6, user.getPassword());
             statement.setLong(7, user.getId());
-            statement.execute();
+            statement.executeUpdate();
+            connection.commit();
             statement.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,10 +70,10 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
                     u = new User();
                     u.setId(results.getInt(1));
                     u.setUserName(results.getString(2));
-                    u.setBirthDate(results.getDate(3).toLocalDate());
+                    u.setBirthDate(results.getDate(3).toLocalDate().toString());
                     u.setEmail(results.getString(4));
                     u.setContactNumber(results.getString(5));
-                    u.setAddress(results.getString(6));
+                    u.setAddress(results.getString(7));
 
                     statement.close();
                     return u;
@@ -97,7 +99,7 @@ public class SqlUserDAO extends SqlDaoBase implements UserDAO {
                 u = new User();
                 u.setId(results.getInt(1));
                 u.setUserName(results.getString(2));
-                u.setBirthDate(results.getDate(3).toLocalDate());
+                u.setBirthDate(results.getDate(3).toLocalDate().toString());
                 u.setEmail(results.getString(4));
                 u.setContactNumber(results.getString(5));
                 u.setAddress(results.getString(6));

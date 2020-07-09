@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@SessionScoped
 @ManagedBean
 @Named
 public class ArticleBean implements Serializable {
@@ -115,7 +115,8 @@ public class ArticleBean implements Serializable {
         else{
             return "articleNotFound";
         }
-        return "detail";
+        System.out.println(FacesContext.getCurrentInstance().getViewRoot().getViewId());
+        return "articleDetail";
     }
 
     public void sellerArticleList(long id) {

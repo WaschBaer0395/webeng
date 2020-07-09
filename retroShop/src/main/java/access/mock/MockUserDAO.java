@@ -23,7 +23,7 @@ public class MockUserDAO implements UserDAO {
         User user1 = new User();
         user1.setId(0);
         user1.setUserName("Laura");
-        user1.setBirthDate((LocalDate)dtf.parse("01-08-1985"));
+        user1.setBirthDate("01-08-1985");
         user1.setAddress("Holunderblütenallee 2b");
         user1.setEmail("hallo@hallo.de");
         user1.setContactNumber("01405432");
@@ -33,7 +33,7 @@ public class MockUserDAO implements UserDAO {
         User user2 = new User();
         user2.setId(1);
         user2.setUserName("Nadtjia");
-        user2.setBirthDate((LocalDate)dtf.parse("01/08/1985"));
+        user2.setBirthDate("01/08/1985");
         user2.setAddress("Holunderblütenallee 2b");
         user2.setEmail("hallo@hallo.de");
         user2.setContactNumber("01405432");
@@ -43,7 +43,7 @@ public class MockUserDAO implements UserDAO {
         User user3 = new User();
         user3.setId(2);
         user3.setUserName("Michelle");
-        user3.setBirthDate((LocalDate)dtf.parse("01/08/1985"));
+        user3.setBirthDate("01/08/1985");
         user3.setAddress("Holunderblütenallee 2b");
         user3.setEmail("hallo@hallo.de");
         user3.setContactNumber("01405432");
@@ -53,7 +53,7 @@ public class MockUserDAO implements UserDAO {
         User user4 = new User();
         user4.setId(3);
         user4.setUserName("Mattthias");
-        user4.setBirthDate((LocalDate)dtf.parse("01/08/1985"));
+        user4.setBirthDate("01/08/1985");
         user4.setAddress("Holunderblütenallee 2b");
         user4.setEmail("hallo@hallo.de");
         user4.setContactNumber("01405432");
@@ -73,8 +73,6 @@ public class MockUserDAO implements UserDAO {
         a.setPassword(user.getPassword());
         a.setEmail(user.getEmail());
         a.setAddress(user.getAddress());
-        a.setUserName(user.getUserName());
-        a.setBirthDate(user.getBirthDate());
         a.setContactNumber(user.getContactNumber());
     }
 
