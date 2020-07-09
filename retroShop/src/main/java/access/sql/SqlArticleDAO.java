@@ -16,7 +16,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
     private static final String findAllQuery = "SELECT ID,NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID FROM WebEng.retroShop.Article";
     private static final String findQuery = "SELECT * FROM WebEng.retroShop.Article WHERE ID=?";
     private static final String updateQuery = "UPDATE WebEng.retroShop.Article SET NAME=?, PRICE=?, DESCRIPTION=?, MINPRICE=?, IMAGEPATH=? WHERE ID=?";
-    private static final String insertQuery = "INSERT INTO WebEng.retroShop.Article (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, convert(date ,?), ?, ?, ?, ?)";
+    private static final String insertQuery = "INSERT INTO WebEng.retroShop.Article (NAME,PRICE,DESCRIPTION,RELEASEDATE,MINPRICE,IMAGEPATH,SELLERID) VALUES(?, ?, ?, ?, ?, ?, ?)";
     private static final String deleteQuery = "DELETE FROM WebEng.retroShop.Article WHERE ID=?";
     private static final String findByStringQuery = "SELECT * FROM WebEng.retroShop.Article WHERE Name LIKE ?";
     private static final String findBySellerQuery = "SELECT * FROM WebEng.retroShop.Article WHERE SELLERID=?";
@@ -38,7 +38,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
                 a.setReleaseDate(results.getDate(5).toLocalDate());
                 a.setMinPrice(results.getFloat(6));
                 a.setImagePath(results.getString(7));
-                a.setSellerId(results.getInt(8));
+                a.setSellerId(results.getLong(8));
             }
 
             statement.close();
@@ -69,7 +69,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
                 a.setReleaseDate(results.getDate(5).toLocalDate());
                 a.setMinPrice(results.getFloat(6));
                 a.setImagePath(results.getString(7));
-                a.setSellerId(results.getInt(8));
+                a.setSellerId(results.getLong(8));
                 articles.add(a);
             }
             statement.close();
@@ -92,10 +92,11 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
             statement.setString(1, a.getName());
             statement.setFloat(2, a.getPrice());
             statement.setString(3, a.getDesc());
-            statement.setDate(4, Date.valueOf(a.getReleaseDate()));
+            Date date = Date.valueOf(a.getReleaseDate());
+            statement.setDate(4, java.sql.Date.valueOf(a.getReleaseDate()));
             statement.setFloat(5, a.getMinPrice());
             statement.setString(6, a.getImagePath());
-            statement.setInt(7, a.getSellerId());
+            statement.setLong(7, a.getSellerId());
             statement.execute();
             statement.close();
 
@@ -157,7 +158,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
                 a.setReleaseDate(results.getDate(5).toLocalDate());
                 a.setMinPrice(results.getFloat(6));
                 a.setImagePath(results.getString(7));
-                a.setSellerId(results.getInt(8));
+                a.setSellerId(results.getLong(8));
                 articles.add(a);
             }
             statement.close();
@@ -191,7 +192,7 @@ public class SqlArticleDAO extends SqlDaoBase implements ArticleDAO {
                 a.setReleaseDate(results.getDate(5).toLocalDate());
                 a.setMinPrice(results.getFloat(6));
                 a.setImagePath(results.getString(7));
-                a.setSellerId(results.getInt(8));
+                a.setSellerId(results.getLong(8));
                 articles.add(a);
             }
             statement.close();

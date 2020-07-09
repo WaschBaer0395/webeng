@@ -3,6 +3,7 @@ package presentation;
 import businesslogic.ArticleManager;
 import businesslogic.SessionUtils;
 import businesslogic.UserManager;
+import com.sun.org.apache.bcel.internal.generic.LoadClass;
 import transferobjects.Article;
 import transferobjects.User;
 
@@ -15,6 +16,7 @@ import javax.inject.Named;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,8 @@ import java.util.List;
 @Named
 public class ArticleBean implements Serializable {
 
-    private ArticleManager articleManager = new ArticleManager();;
+    private ArticleManager articleManager = new ArticleManager();
+    ;
     private Article article = new Article();
     private List<Article> articleList;
     private List<Article> searchedList;
@@ -33,12 +36,12 @@ public class ArticleBean implements Serializable {
 
 
     @PostConstruct
-    public void init(){
-            articleList = articleManager.getTheArticles();
-            searchedList = articleList;
+    public void init() {
+        articleList = articleManager.getTheArticles();
+        searchedList = articleList;
     }
 
-    public void setArticle(Article a){
+    public void setArticle(Article a) {
         this.article = a;
     }
 
@@ -46,69 +49,81 @@ public class ArticleBean implements Serializable {
         return this.article;
     }
 
-    public Article getCurrentArticle(){return this.currentArticle;}
+    public Article getCurrentArticle() {
+        return this.currentArticle;
+    }
 
-    public void setArticleList(List<Article> articleList){
+    public void setArticleList(List<Article> articleList) {
         this.articleList = articleList;
     }
 
-    public List<Article> getSearchedList(){return this.searchedList;}
+    public List<Article> getSearchedList() {
+        return this.searchedList;
+    }
 
     public List<Article> getArticleList() {
         return this.articleList;
     }
 
-    public String showAllArticles(){
+    public String showAllArticles() {
         articleList = articleManager.getTheArticles();
         return "";
     }
 
-    public String saveArticle(){
-        if(articleManager.getArticle(currentArticle.getId()) != null){
-            currentArticle = article;
-            articleManager.updateArticle(currentArticle);
-            return "success";
-        }
-        else {
+    public String saveArticle() {
+        System.out.println(FacesContext.getCurrentInstance().getViewRoot().getViewId());
+        if (currentArticle != null) {
+            if (articleManager.getArticle(currentArticle.getId()) != null) {
+                currentArticle = article;
+                articleManager.updateArticle(currentArticle);
+            }
+        } else {
+            HttpSession session = SessionUtils.getSession();
+            User user = (User) session.getAttribute("user");
+            LocalDate today = LocalDate.now();
+            article.setReleaseDate(today);
+            article.setSellerId(user.getId());
             articleManager.addArticle(article);
             articleList = articleManager.getTheArticles();
-            return "success";
         }
+        return "success";
+    }
 
-    }public String updateArticle(){
+    public String updateArticle() {
         articleManager.updateArticle(article);
         return "";
     }
 
-    public String removeArticle(){
+    public String removeArticle() {
         articleManager.deleteArticle(article.getId());
         articleList = articleManager.getTheArticles();
         return "";
     }
 
-    public String toArticleList(){
-        System.out.println("to article list from :" + FacesContext.getCurrentInstance().getViewRoot().getViewId() );
+    public String toArticleList() {
+        System.out.println("to article list from :" + FacesContext.getCurrentInstance().getViewRoot().getViewId());
         return "toArticleList";
     }
-    public String getSearchString(){
+
+    public String getSearchString() {
         return this.searchString;
     }
 
-    public void setSearchString(String s){
+    public void setSearchString(String s) {
         System.out.println("setter: " + s);
         this.searchString = s;
         System.out.println("updated: " + searchString);
     }
 
-    public String searchedArticle(){
+    public String searchedArticle() {
         this.searchedList = articleManager.searchArticle(searchString);
         return "searchedList";
     }
 
-    public List<String> listArticleNames(String s){
+    public List<String> listArticleNames(String s) {
         List<String> articleNames = new ArrayList<String>();
 
-        for(Article a : articleManager.searchArticle(s)){
+        for (Article a : articleManager.searchArticle(s)) {
             if (!articleNames.contains(a.getName())) {
                 articleNames.add(a.getName());
             }
@@ -117,7 +132,7 @@ public class ArticleBean implements Serializable {
         return articleNames;
     }
 
-    public String goToDetail(long id){
+    public String goToDetail(long id) {
         currentArticle = null;
         if (articleManager.getArticle(id) != null) {
             currentArticle = articleManager.getArticle(id);
@@ -129,29 +144,29 @@ public class ArticleBean implements Serializable {
     }
 
     public void sellerArticleList(long id) {
-        userArticleList =  articleManager.getUserArticleList(id);
+        userArticleList = articleManager.getUserArticleList(id);
     }
 
-    public List<Article> getUserArticleList(){
+    public List<Article> getUserArticleList() {
         HttpSession session = SessionUtils.getSession();
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         long userID = user.getId();
         sellerArticleList(userID);
         return this.userArticleList;
     }
 
-    public String goToEdit(Article a){
+    public String goToEdit(Article a) {
         currentArticle = a;
         article = currentArticle;
         return "addArticle";
     }
 
-    public String deleteArticle(long id){
+    public String deleteArticle(long id) {
         articleManager.deleteArticle(id);
-        return"myProfile";
+        return "myProfile";
     }
 
-    public String addArticle(){
+    public String addArticle() {
         System.out.println("Debug: addArticle <--");
         currentArticle = null;
         article = new Article();

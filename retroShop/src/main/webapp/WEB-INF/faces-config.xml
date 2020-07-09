@@ -172,7 +172,15 @@
             <to-view-id>/protected/add_article.xhtml</to-view-id>
         </navigation-case>
 
+
+        <navigation-case>
+            <from-action>#{articleBean.saveArticle}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/protected/myProfile.xhtml</to-view-id>
+        </navigation-case>
+
     </navigation-rule>
+
 
     <navigation-rule>
         <from-view-id>*</from-view-id>

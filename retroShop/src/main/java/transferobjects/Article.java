@@ -26,7 +26,7 @@ public class Article implements Serializable {
 	private float minPrice;
 	private LocalDate releaseDate;
 	private String imagePath;
-	private int sellerId;
+	private long sellerId;
 	@Id
 	private long id;
 
@@ -73,10 +73,10 @@ public class Article implements Serializable {
 	public String getImagePath(){
 		return this.imagePath;
 	}
-	public void setSellerId(int sellerId){
+	public void setSellerId(long sellerId){
 		this.sellerId = sellerId;
 	}
-	public int getSellerId(){
+	public long getSellerId(){
 		return this.sellerId;
 	}
 }
