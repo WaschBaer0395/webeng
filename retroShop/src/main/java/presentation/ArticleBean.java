@@ -45,6 +45,8 @@ public class ArticleBean implements Serializable {
         return this.article;
     }
 
+    public Article getCurrentArticle(){return this.currentArticle;}
+
     public void setArticleList(List<Article> articleList){
         this.articleList = articleList;
     }

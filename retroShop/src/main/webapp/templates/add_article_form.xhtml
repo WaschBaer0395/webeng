@@ -7,39 +7,79 @@
 >
 
 
-
-
-            <h:form action="">
-                <div class="col-sm">
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="articleName" styleClass="p-col-fixed" style="width:100px" value="Name"/>
-                        <div class="p-col">
-                            <p:inputText id="articleName" value="#{articleBean.article.name}" required="true"/>
+    <h:form action="" class="m-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h:outputLabel for="articleName" value="Name"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="description" styleClass="p-col-fixed" style="width:100px"
-                                       value="Beschreibung"/>
-                        <div class="p-col">
-                            <p:inputText id="description" value="#{articleBean.article.desc}" required="true"/>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <p:inputText id="articleName" class="form-control" value="#{articleBean.article.name}"
+                                             required="true"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="price" styleClass="p-col-fixed" style="width:100px" value="Preis"/>
-                        <div class="p-col">
-                            <p:inputNumber id="price" value="#{articleBean.article.price}" required="true"/>
+                        <div class="row">
+                            <div class="col-12">
+                                <h:outputLabel for="inputGroupFile01" value="Artikelbild"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-field p-grid">
-                        <h:outputLabel for="min-price" styleClass="p-col-fixed" style="width:100px"
-                                       value="Mindestpreis"/>
-                        <div class="p-col">
-                            <p:inputNumber id="min-price" value="#{articleBean.article.minPrice}" required="true"/>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                               aria-describedby="inputGroupFileAddon01" required=""/>
+                                        <label class="custom-file-label" for="inputGroupFile01">Datei auswählen</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-field p-grid">
-                        <h:commandButton action="#{articleBean.saveArticle}" type="submit" value="Hinzufügen" style="margin-top:20px"/>
+                        <div class="row">
+                            <div class="col-12">
+                                <h:outputLabel for="description" value="Beschreibung"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <p:inputTextarea id="description" class="form-control"
+                                                 value="#{articleBean.article.desc}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <h:outputLabel for="price" value="Preis"/>
+                            </div>
+                            <div class="col-6">
+                                <h:outputLabel for="min-price" value="Mindestpreis"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <p:inputNumber id="price" value="#{articleBean.article.price}"
+                                               required="true"/>
+                            </div>
+                            <div class="col-6">
+                                <p:inputNumber id="min-price"
+                                               value="#{articleBean.article.minPrice}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h:commandButton class="btn btn-success" action="#{articleBean.saveArticle}"
+                                                 type="submit"
+                                                 value="Hinzufügen" style="margin-top:20px"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </h:form>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </h:form>
 </ui:composition>

@@ -1,0 +1,63 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+    <style>
+        .detail {
+            width: 75%;
+            padding-left: 25px;
+        }
+
+        .detail td {
+            font-size: 12px;
+        }
+
+        .ui-datascroller .ui-datascroller-item {
+            border-bottom: 1px solid #A8A8A8;
+            padding: 25px 10px;
+            /* with the exported variables from Nova and Luna Themes*/
+            border-bottom-color: var(--input-border-color, #A8A8A8);
+        }
+    </style>
+
+
+    <p:dataScroller class="w-75 p-3 mx-auto" id="searchArticle" chunkSize="4" var="Article"
+                    value="#{articleBean.userArticleList}">
+        <f:facet name="header">
+            Scroll Down to Load More Articles
+        </f:facet>
+
+        <h:panelGrid onclick="" columns="2" style="width:100%" columnClasses="logo,detail">
+            <h:form>
+                <p:commandLink ajax="false" action="#{articleBean.goToDetail(Article.id)}">
+                    <p:graphicImage class="img-thumbnail" style="max-height: 200px; max-width: 200px"
+                                    url="#{Article.imagePath}"/>
+                </p:commandLink>
+            </h:form>
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Name:"/>
+                    <h:form>
+                        <p:commandLink ajax="false" action="#{articleBean.goToDetail(Article.id)}">
+                            <h:outputText value="#{Article.name}" style="font-weight: bold"/>
+                        </p:commandLink>
+                    </h:form>
+                    <h:outputText value="Preis:"/>
+                    <h:outputText value="#{Article.price} EUR" style="font-weight: bold"/>
+
+                    <h:outputText value="eingestellt von:"/>
+                    <h:outputText value="#{userBean.getuserById(Article.sellerId).getUserName()}"
+                                  style="font-weight: normal"/>
+
+                    <h:outputText value="eingestellt am:"/>
+                    <h:outputText value="#{Article.releaseDate}" style="font-weight: lighter"/>
+
+                    <h:outputText value="Beschreibung:"/>
+                    <h:outputText value="#{Article.desc}" style="font-weight: lighter"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</ui:composition>
