@@ -72,6 +72,12 @@
             <from-outcome>addArticle</from-outcome>
             <to-view-id>/protected/add_article.xhtml</to-view-id>
         </navigation-case>
+
+        <navigation-case>
+            <from-action>#{articleBean.addArticle}</from-action>
+            <from-outcome>addArticle</from-outcome>
+            <to-view-id>/protected/add_article.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
@@ -120,6 +126,13 @@
             <from-outcome>articleDetail</from-outcome>
             <to-view-id>/protected/detail_article.xhtml</to-view-id>
         </navigation-case>
+
+        <navigation-case>
+            <from-action>#{articleBean.addArticle}</from-action>
+            <from-outcome>addArticle</from-outcome>
+            <to-view-id>/protected/add_article.xhtml</to-view-id>
+        </navigation-case>
+
     </navigation-rule>
 
     <navigation-rule>
@@ -147,12 +160,20 @@
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/protected/myProfile.xhtml</from-view-id>
+        <from-view-id>/protected/*</from-view-id>
         <navigation-case>
             <from-outcome>updateProfile</from-outcome>
             <to-view-id>/protected/modify_user.xhtml</to-view-id>
         </navigation-case>
+
+        <navigation-case>
+            <from-action>#{articleBean.addArticle}</from-action>
+            <from-outcome>addArticle</from-outcome>
+            <to-view-id>/protected/add_article.xhtml</to-view-id>
+        </navigation-case>
+
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>

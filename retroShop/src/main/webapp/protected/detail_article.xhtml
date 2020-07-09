@@ -59,7 +59,7 @@
                                             </div>
                                         </li>
                                         <li class="list-group-item">
-                                            <b>Eingestellt von:</b> #{articleBean.currentArticle.sellerId}</li>
+                                            <b>Eingestellt von:</b> #{userBean.getuserById(articleBean.currentArticle.sellerId).getUserName()}</li>
                                         <li class="list-group-item">
                                             <b>Eingestellt am:</b> #{articleBean.currentArticle.releaseDate}</li>
                                         <li class="list-group-item">

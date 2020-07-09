@@ -2,6 +2,7 @@ package presentation;
 
 import businesslogic.ArticleManager;
 import businesslogic.SessionUtils;
+import businesslogic.UserManager;
 import transferobjects.Article;
 import transferobjects.User;
 
@@ -63,9 +64,16 @@ public class ArticleBean implements Serializable {
     }
 
     public String saveArticle(){
-        articleManager.addArticle(article);
-        articleList = articleManager.getTheArticles();
-        return "";
+        if(articleManager.getArticle(currentArticle.getId()) != null){
+            currentArticle = article;
+            articleManager.updateArticle(currentArticle);
+            return "success";
+        }
+        else {
+            articleManager.addArticle(article);
+            articleList = articleManager.getTheArticles();
+            return "success";
+        }
 
     }public String updateArticle(){
         articleManager.updateArticle(article);
@@ -111,10 +119,9 @@ public class ArticleBean implements Serializable {
 
     public String goToDetail(long id){
         currentArticle = null;
-        if( articleManager.getArticle(id) != null){
+        if (articleManager.getArticle(id) != null) {
             currentArticle = articleManager.getArticle(id);
-        }
-        else{
+        } else {
             return "articleNotFound";
         }
         System.out.println(FacesContext.getCurrentInstance().getViewRoot().getViewId());
@@ -133,5 +140,22 @@ public class ArticleBean implements Serializable {
         return this.userArticleList;
     }
 
+    public String goToEdit(Article a){
+        currentArticle = a;
+        article = currentArticle;
+        return "addArticle";
+    }
+
+    public String deleteArticle(long id){
+        articleManager.deleteArticle(id);
+        return"myProfile";
+    }
+
+    public String addArticle(){
+        System.out.println("Debug: addArticle <--");
+        currentArticle = null;
+        article = new Article();
+        return "addArticle";
+    }
 
 }

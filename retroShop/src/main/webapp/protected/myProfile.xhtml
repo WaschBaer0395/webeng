@@ -52,8 +52,10 @@
                 </div>
                 <div class="card mt-3 btn-outline-success" style="width: 90%">
                     <div class="text-center">
-                        <h:button type="button" class="btn btn-link" outcome="addArticle" value="Artikel Hinzufügen" icon="pi pi-plus">
-                        </h:button>
+                        <h:form>
+                            <h:commandButton type="submit" class="btn btn-link" action="#{articleBean.addArticle}" value="Artikel Hinzufügen" icon="pi pi-plus">
+                            </h:commandButton>
+                        </h:form>
                     </div>
                 </div>
             </div>

@@ -23,13 +23,9 @@
     </style>
 
 
-    <p:dataScroller class="w-75 p-3 mx-auto" id="searchArticle" chunkSize="4" var="Article"
+    <p:dataScroller class="" id="searchArticle" chunkSize="4" var="Article"
                     value="#{articleBean.userArticleList}">
-        <f:facet name="header">
-            Scroll Down to Load More Articles
-        </f:facet>
-
-        <h:panelGrid onclick="" columns="2" style="width:100%" columnClasses="logo,detail">
+        <h:panelGrid onclick="" columns="3" style="width:100%" columnClasses="logo,detail">
             <h:form>
                 <p:commandLink ajax="false" action="#{articleBean.goToDetail(Article.id)}">
                     <p:graphicImage class="img-thumbnail" style="max-height: 200px; max-width: 200px"
@@ -47,15 +43,31 @@
                     <h:outputText value="Preis:"/>
                     <h:outputText value="#{Article.price} EUR" style="font-weight: bold"/>
 
-                    <h:outputText value="eingestellt von:"/>
-                    <h:outputText value="#{userBean.getuserById(Article.sellerId).getUserName()}"
-                                  style="font-weight: normal"/>
-
                     <h:outputText value="eingestellt am:"/>
                     <h:outputText value="#{Article.releaseDate}" style="font-weight: lighter"/>
 
                     <h:outputText value="Beschreibung:"/>
-                    <h:outputText value="#{Article.desc}" style="font-weight: lighter"/>
+                    <h:outputText
+                            value="#{Article.desc.length() gt 18 ? Article.desc.substring(0,15).concat('...') : Article.desc}"
+                            style="font-weight: lighter"/>
+                </h:panelGrid>
+            </p:outputPanel>
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <p:commandLink value="" action="#{articleBean.goToEdit(Article)}" class="btn btn-success">
+                                    <i class="fas fa-highlighter"></i>
+                                </p:commandLink>
+                            </div>
+                            <div class="col-6">
+                                <p:commandLink value="" action="#{articleBean.deleteArticle(Article.id)}" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </p:commandLink>
+                            </div>
+                        </div>
+                    </div>
                 </h:panelGrid>
             </p:outputPanel>
         </h:panelGrid>
